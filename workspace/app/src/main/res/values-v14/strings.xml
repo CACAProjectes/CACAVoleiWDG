@@ -1,0 +1,137 @@
+<resources>
+    <string name="app_name">CACAVoleiWDG</string>
+    <string name="appwidget_text">CACAVolei</string>
+    <string name="configure">Configuració</string>
+    <string name="add_widget">Afegir widget</string>
+    <string name="tvIdWidget">Id Widget:</string>
+    <string name="tvIdTorneig">Id Torneig:</string>
+    <string name="tvIdColor">Id Color:</string>
+    <string name="tvEquip">Equip:</string>
+    <!--    URLs xarxes socials    -->
+    <string name="urlGmail">mailto:cacaprojectsapps@gmail.com?Subject=Comentaris CACAVolei</string>
+    <string name="urlFacebook">https://www.facebook.com/cacaprojects.app.9/</string>
+    <string name="urlTwitter">https://twitter.com/CaCaApps</string>
+    <string name="urlInstagram">https://www.instagram.com/cacaprojectsapps/</string>
+    <string name="urlFCVB">http://competicio.fcvoleibol.cat/competiciones.asp</string>
+    <!--    Dades inicials de prova -->
+    <string name="ini_titol_1">S\'ha produït un error!</string>
+    <string name="ini_titol_2">Consulti amb el seu administrador</string>
+    <string name="ini_titol_3">JORNADA ANTERIOR</string>
+    <string name="ini_titol_4">JORNADA 1 - 27/09/2020</string>
+    <string name="titol_jornada">JORNADA\u0020</string>
+    <string name="titol_grup">GRUP\u0020</string>
+    <string name="titol_separador">\u0020-\u0020</string>
+    <string name="titol_separador_res">\u0020\u0020-\u0020\u0020</string>
+    <string name="titol_espai_blanc">\u0020</string>
+    <string name="simbol_num">#</string>
+    <string name="titol_punts">PTS</string>
+    <!-- -->
+    <string name="ini_partit_11">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="ini_partit_12">\u0020\u0020 \u0020\u0020</string>
+    <string name="ini_partit_13">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="ini_partit_21">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="ini_partit_22">\u0020\u0020 \u0020\u0020</string>
+    <string name="ini_partit_23">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="ini_partit_31">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="ini_partit_32">\u0020\u0020 \u0020\u0020</string>
+    <string name="ini_partit_33">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="ini_partit_41">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="ini_partit_42">\u0020\u0020 \u0020\u0020</string>
+    <string name="ini_partit_43">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <!-- -->
+    <string name="ini_partit_seg_11">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="ini_partit_seg_12">\u0020\u0020 \u0020\u0020</string>
+    <string name="ini_partit_seg_13">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="ini_partit_seg_100">\u0020\u0020</string>
+    <string name="ini_partit_seg_101">\u0020\u0020 \u0020\u0020 \u0020\u0020\u0020\u0020 \u0020\u0020 \u0020\u0020</string>
+    <string name="ini_partit_seg_102">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+
+    <string name="ini_partit_seg_21">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="ini_partit_seg_22">\u0020\u0020 \u0020\u0020</string>
+    <string name="ini_partit_seg_23">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="ini_partit_seg_200">\u0020\u0020</string>
+    <string name="ini_partit_seg_201">\u0020\u0020 \u0020\u0020 \u0020\u0020\u0020\u0020 \u0020\u0020 \u0020\u0020</string>
+    <string name="ini_partit_seg_202">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+
+    <string name="ini_partit_seg_31">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="ini_partit_seg_32">\u0020\u0020 \u0020\u0020</string>
+    <string name="ini_partit_seg_33">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="ini_partit_seg_300">\u0020\u0020</string>
+    <string name="ini_partit_seg_301">\u0020\u0020 \u0020\u0020 \u0020\u0020\u0020\u0020 \u0020\u0020 \u0020\u0020</string>
+    <string name="ini_partit_seg_302">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+
+    <string name="ini_partit_seg_41">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="ini_partit_seg_42">\u0020\u0020 \u0020\u0020</string>
+    <string name="ini_partit_seg_43">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="ini_partit_seg_400">\u0020\u0020</string>
+    <string name="ini_partit_seg_401">\u0020\u0020 \u0020\u0020 \u0020\u0020\u0020\u0020 \u0020\u0020 \u0020\u0020</string>
+    <string name="ini_partit_seg_402">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <!-- -->
+    <string name="ini_titol_classificacio">CLASSIFICACIÓ</string>
+    <string name="ini_titol_class_col_1">#</string>
+    <string name="ini_titol_class_col_2">EQUIP\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="ini_titol_class_col_3">PJ</string>
+    <string name="ini_titol_class_col_4">SF</string>
+    <string name="ini_titol_class_col_5">SC</string>
+    <string name="ini_titol_class_col_6">PUNTS</string>
+    <string name="ini_titol_class_col_11"></string>
+    <string name="ini_titol_class_col_12">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="ini_titol_class_col_13">\u0020\u0020</string>
+    <string name="ini_titol_class_col_14">\u0020\u0020</string>
+    <string name="ini_titol_class_col_15">\u0020\u0020</string>
+    <string name="ini_titol_class_col_16">\u0020\u0020\u0020\u0020</string>
+    <string name="ini_titol_class_col_21"></string>
+    <string name="ini_titol_class_col_22">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="ini_titol_class_col_23">\u0020\u0020</string>
+    <string name="ini_titol_class_col_24">\u0020\u0020</string>
+    <string name="ini_titol_class_col_25">\u0020\u0020</string>
+    <string name="ini_titol_class_col_26">\u0020\u0020\u0020\u0020</string>
+    <string name="ini_titol_class_col_31"></string>
+    <string name="ini_titol_class_col_32">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="ini_titol_class_col_33">\u0020\u0020</string>
+    <string name="ini_titol_class_col_34">\u0020\u0020</string>
+    <string name="ini_titol_class_col_35">\u0020\u0020</string>
+    <string name="ini_titol_class_col_36">\u0020\u0020\u0020\u0020</string>
+    <string name="ini_titol_class_col_41"></string>
+    <string name="ini_titol_class_col_42">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="ini_titol_class_col_43">\u0020\u0020</string>
+    <string name="ini_titol_class_col_44">\u0020\u0020</string>
+    <string name="ini_titol_class_col_45">\u0020\u0020</string>
+    <string name="ini_titol_class_col_46">\u0020\u0020\u0020\u0020</string>
+    <string name="ini_titol_class_col_51"></string>
+    <string name="ini_titol_class_col_52">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="ini_titol_class_col_53">\u0020\u0020</string>
+    <string name="ini_titol_class_col_54">\u0020\u0020</string>
+    <string name="ini_titol_class_col_55">\u0020\u0020</string>
+    <string name="ini_titol_class_col_56">\u0020\u0020\u0020\u0020</string>
+    <string name="ini_titol_class_col_61"></string>
+    <string name="ini_titol_class_col_62">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="ini_titol_class_col_63">\u0020\u0020</string>
+    <string name="ini_titol_class_col_64">\u0020\u0020</string>
+    <string name="ini_titol_class_col_65">\u0020\u0020</string>
+    <string name="ini_titol_class_col_66">\u0020\u0020\u0020\u0020</string>
+    <string name="ini_titol_class_col_71"></string>
+    <string name="ini_titol_class_col_72">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="ini_titol_class_col_73">\u0020\u0020</string>
+    <string name="ini_titol_class_col_74">\u0020\u0020</string>
+    <string name="ini_titol_class_col_75">\u0020\u0020</string>
+    <string name="ini_titol_class_col_76">\u0020\u0020\u0020\u0020</string>
+    <string name="ini_titol_class_col_81"></string>
+    <string name="ini_titol_class_col_82">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020</string>
+    <string name="ini_titol_class_col_83">\u0020\u0020</string>
+    <string name="ini_titol_class_col_84">\u0020\u0020</string>
+    <string name="ini_titol_class_col_85">\u0020\u0020</string>
+    <string name="ini_titol_class_col_86">\u0020\u0020\u0020\u0020</string>
+    <string name="titol_configuracio">CACAVolei Configuració</string>
+    <string name="colorRosa">ROSA</string>
+    <string name="ini_titol_seguent">JORNADA SEGÜENT</string>
+    <string name="tvInformacioapp">
+Instruccions per afegir el calendari de partits a la pantalla:
+\n\n- Tancar/Minimitzar aquesta aplicació i fer servir la operativa d\'afegir widgets del sistema Android.
+\n- Cercar la icona del widget anomenat \'CACAVoleiWDG\' i arrossegar-la a la pantalla
+\n- A la primera pantalla de configuració, escriure el nom de l\'equip. Amb les primeres lletres mostrarà les seves coincidències. Aleshores, seleccionar l\'equip cercat.
+\n- Prémer el botó de \'Afegir Widget\'
+\n- Ajustar el widget a la pantalla, 5x6, és la mida ideal
+\n\n(*) Si l\'aplicació no funciona, provar d\'activar la instal·lació de fonts desconegudes des de la configuració del sistema (Pantalla bloqueig i seguretat -> Fonts desconegudes)
+    </string>
+</resources>

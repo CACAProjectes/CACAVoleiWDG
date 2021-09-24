@@ -1,0 +1,1189 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#09C"
+    android:padding="@dimen/widget_margin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E91E63"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTitol1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#D30000"
+            android:contentDescription="@string/appwidget_text"
+            android:fontFamily="monospace"
+            android:gravity="center_horizontal"
+            android:text="@string/ini_titol_1"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvTitol2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#D30000"
+            android:contentDescription="@string/appwidget_text"
+            android:fontFamily="monospace"
+            android:gravity="center_horizontal"
+            android:text="@string/ini_titol_2"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvTitol3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#AC0000"
+            android:contentDescription="@string/appwidget_text"
+            android:fontFamily="monospace"
+            android:gravity="center_horizontal"
+            android:text="@string/ini_titol_3"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#000000" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start">
+
+                <TextView
+                    android:id="@+id/tvPartitCol1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_partit_11"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvPartitCol2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_partit_12"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvPartitCol3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_partit_13"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvPartitCol21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_partit_21"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvPartitCol22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_partit_22"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvPartitCol23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_partit_23"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvPartitCol31"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_partit_31"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvPartitCol32"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_partit_32"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvPartitCol33"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_partit_33"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvPartitCol41"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_partit_41"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvPartitCol42"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_partit_42"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvPartitCol43"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_partit_43"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+            </TableRow>
+        </TableLayout>
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#000000" />
+
+        <TextView
+            android:id="@+id/tvTitol4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#AC0000"
+            android:contentDescription="@string/appwidget_text"
+            android:fontFamily="monospace"
+            android:gravity="center_horizontal"
+            android:text="@string/ini_titol_4"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvPartitSegCol1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_partit_seg_11"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvPartitSegCol2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_partit_seg_12"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvPartitSegCol3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_partit_seg_13"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvPartitSegCol21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_partit_seg_21"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvPartitSegCol22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_partit_seg_22"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvPartitSegCol23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_partit_seg_23"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvPartitSegCol31"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_partit_seg_31"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvPartitSegCol32"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_partit_seg_32"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvPartitSegCol33"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_partit_seg_33"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvPartitSegCol41"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_partit_seg_41"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvPartitSegCol42"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_partit_seg_42"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvPartitSegCol43"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_partit_seg_43"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/tvTitolClassificacio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#AC0000"
+            android:contentDescription="@string/appwidget_text"
+            android:fontFamily="monospace"
+            android:gravity="center_horizontal"
+            android:text="@string/ini_titol_classificacio"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#D10000">
+
+                <TextView
+                    android:id="@+id/tvClassCol1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_1"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvClassCol2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_2"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvClassCol3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_3"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvClassCol4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_4"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvClassCol5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_5"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvClassCol6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_6"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvClassCol11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_11"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_12"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_13"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_14"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_15"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_16"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvClassCol21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_21"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_22"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_23"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_24"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_25"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol26"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_26"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvClassCol31"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_31"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol32"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_32"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol33"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_33"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol34"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_34"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol35"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_35"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol36"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_36"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvClassCol41"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_41"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol42"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_42"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol43"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_43"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol44"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_44"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol45"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_45"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol46"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_46"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvClassCol51"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_51"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol52"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_52"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol53"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_53"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol54"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_54"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol55"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_55"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol56"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_56"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvClassCol61"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_61"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol62"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_62"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol63"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_63"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol64"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_64"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol65"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_65"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol66"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_66"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvClassCol71"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_71"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol72"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_72"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol73"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_73"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol74"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_74"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol75"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_75"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol76"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_76"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvClassCol81"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_81"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol82"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_82"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol83"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_83"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol84"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_84"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol85"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_85"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tvClassCol86"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/appwidget_text"
+                    android:fontFamily="monospace"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="5sp"
+                    android:paddingRight="5sp"
+                    android:text="@string/ini_titol_class_col_86"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="equips">
+        <item>Arenal Emevé - SFV - Grup: A - 9998</item>
+        <item>C.V. Kiele - SFV - Grup: A - 9998</item>
+        <item>DSV CV Sant Cugat - SFV - Grup: A - 9998</item>
+        <item>Feel Volley Alcobendas - SFV - Grup: A - 9998</item>
+        <item>IBSA CV CCO 7 Palmas - SFV - Grup: A - 9998</item>
+        <item>Madrid Chamberí - SFV - Grup: A - 9998</item>
+        <item>Osacc Haro Rioja Vóley - SFV - Grup: A - 9998</item>
+        <item>Algar Surmenor - SFV - Grup: A - 9998</item>
+        <item>Avarca de Menorca - SFV - Grup: A - 9998</item>
+        <item>Cajasol Vóley Dos Hermanas - SFV - Grup: A - 9998</item>
+        <item>CV Sayre CC La Ballena - SFV - Grup: A - 9998</item>
+        <item>Sanaya Libby,s La Laguna - SFV - Grup: A - 9998</item>
+
+        <item>Arenal Emevé - SVM - Grup: A - 9999</item>
+        <item>Barça Voleibol - SVM - Grup: A - 9999</item>
+        <item>C.V. Eivissa - SVM - Grup: A - 9999</item>
+        <item>C.V. Guaguas - SVM - Grup: A - 9999</item>
+        <item>C.V. Teruel - SVM - Grup: A - 9999</item>
+        <item>CDV Río Duero Soria - SVM - Grup: A - 9999</item>
+        <item>Conectabalear CV Manacor - SVM - Grup: A - 9999</item>
+        <item>Melilla Sport Capital - SVM - Grup: A - 9999</item>
+        <item>Rotogal Boiro VB - SVM - Grup: A - 9999</item>
+        <item>Textil Santanderina - SVM - Grup: A - 9999</item>
+        <item>UBE L\'Illa Grau - SVM - Grup: A - 9999</item>
+        <item>Unicaja Costa de Almería - SVM - Grup: A - 9999</item>
+        <item>Urbia Vóley Palma - SVM - Grup: A - 9999</item>
+        <item>Voleibol Almoradí - SVM - Grup: A - 9999</item>
+
+        <item>Voleibol Dumbría - SM2 - Grup: C - 9997</item>
+        <item>Club Vigo Voleibol - SM2 - Grup: C - 9997</item>
+        <item>Textil Santanderina - SM2 - Grup: C - 9997</item>
+        <item>CyL Palencia 2022 - SM2 - Grup: C - 9997</item>
+        <item>VB Utrera - SM2 - Grup: C - 9997</item>
+        <item>CV Haris - SM2 - Grup: C - 9997</item>
+        <item>Cáceres PH - SM2 - Grup: C - 9997</item>
+        <item>Grupo Laura Otero - SM2 - Grup: C - 9997</item>
+        <item>CV Almendralejo - SM2 - Grup: C - 9997</item>
+    </string-array>
+</resources>
