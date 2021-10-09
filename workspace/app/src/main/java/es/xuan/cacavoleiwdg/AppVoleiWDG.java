@@ -112,12 +112,19 @@ public class AppVoleiWDG extends AppWidgetProvider {
             4398 - 3ª DIVISIÓ JUVENIL FEMENINA  I
             4402 - 2ª DIVISIÓ INFANTIL FEMENINA A
         */
-        if (p_idTorneig < 9000)
+        if (p_idTorneig == 2122)
+            return llegirTorneigFCVB21(p_idTorneig);
+        else if (p_idTorneig < 9000)
             // Torneig de la FCVB
             return llegirTorneigFCVB(p_idTorneig);
         else
             // Torneig de la RFEVB
             return llegirTorneigRFEVB(p_idTorneig);
+    }
+
+    private static Torneig[] llegirTorneigFCVB21(int p_idTorneig) {
+        Torneig[] tornejos = new Torneig[2];
+        return tornejos;
     }
 
     private static Torneig[] llegirTorneigRFEVB(int p_idTorneig) {

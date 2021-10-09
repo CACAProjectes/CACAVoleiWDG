@@ -13,6 +13,7 @@ import android.widget.ImageView;
 
 import es.xuan.cacavoleiwdg.logs.LogCACA;
 import es.xuan.cacavoleiwdg.migracio.VBMigracioFCVB;
+import es.xuan.cacavoleiwdg.migracio.VBMigracioFCVB21;
 import es.xuan.cacavoleiwdg.model.Torneig;
 import es.xuan.cacavoleiwdg.model.Tornejos;
 import es.xuan.cacavoleiwdg.varis.Constants;
@@ -29,13 +30,14 @@ public class MainActivity extends AppCompatActivity {
         //
         iniXarxesSocials();
         //
-        //iniTornejos();
+        iniTornejos();
         //
         finalitzar();
     }
 
     private void iniTornejos() {
-        VBMigracioFCVB migracio = new VBMigracioFCVB();
+        //VBMigracioFCVB migracio = new VBMigracioFCVB();
+        VBMigracioFCVB21 migracio = new VBMigracioFCVB21();
         migracio.llistatTornejosEquips();
     }
     private void iniXarxesSocials() {

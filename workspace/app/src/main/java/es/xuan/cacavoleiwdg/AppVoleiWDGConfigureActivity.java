@@ -24,9 +24,7 @@ public class AppVoleiWDGConfigureActivity extends Activity {
     private static final String PREFS_NAME = "es.xuan.cacavoleiwdg.AppVoleiWDG";
     private static final String PREF_PREFIX_KEY = "appwidget_";
     private int mAppWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
-    //private static TextView mAppWidgetText;
     private static EditText mAppWidgetTorneig;
-    //private static TextView mAppWidgetColor;
 
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
         public void onClick(View v) {
