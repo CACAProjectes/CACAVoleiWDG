@@ -5,9 +5,13 @@ import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.util.Log;
 import android.widget.RemoteViews;
+
+import org.json.JSONException;
+
 import java.util.Date;
 import es.xuan.cacavoleiwdg.logs.LogCACA;
 import es.xuan.cacavoleiwdg.migracio.VBMigracioFCVB;
+import es.xuan.cacavoleiwdg.migracio.VBMigracioFCVB21;
 import es.xuan.cacavoleiwdg.migracio.VBMigracioRFEVB;
 import es.xuan.cacavoleiwdg.model.Torneig;
 import es.xuan.cacavoleiwdg.model.Tornejos;
@@ -91,13 +95,13 @@ public class AppVoleiWDG extends AppWidgetProvider {
         // JORNADA I DATA
         Vista.omplirDadesJornada(p_context, views, p_tornejos[1]);
         // PARTITS JORNADA ACTUAL
-        Vista.omplirDadesPartitsJornada(p_context, views, p_tornejos[1].getPartitsTorneig().getPartitsJugats(), p_tornejos[1].getPartitsTorneig().getPartitsResultats(), p_nomEquip);
+        Vista.omplirDadesPartitsJornada(p_context, views, p_tornejos[1].getPartitsTorneig().getPartitsResultats(), p_tornejos[1].getPartitsTorneig().getPartitsResultats(), p_nomEquip);
         // PARTITS JORNADA ANTERIOR
-        Vista.omplirDadesPartitsAnteriors(p_context, views, p_tornejos[0].getPartitsTorneig().getPartitsResultats(), p_nomEquip);
+        Vista.omplirDadesPartitsAnteriors(p_context, views, p_tornejos[1].getPartitsTorneig().getPartitsJugats(), p_nomEquip);
         // PARTITS JORNADA SEGÜENT
         Vista.omplirDadesPartitsSeguents(p_context, views, p_tornejos[1].getPartitsTorneig().getPartitsProxims(), p_nomEquip);
         // CLASSIFICACIÓ
-        Vista.omplirClassificacio(p_context, views, p_tornejos[1].getClassificacio(), p_nomEquip);
+        //Vista.omplirClassificacio(p_context, views, p_tornejos[1].getClassificacio(), p_nomEquip);
         // Refrescar WIDGET
         Vista.refrescarWidgetUpdate(p_context, views, p_appWidgetId);
         //
@@ -124,6 +128,36 @@ public class AppVoleiWDG extends AppWidgetProvider {
 
     private static Torneig[] llegirTorneigFCVB21(int p_idTorneig) {
         Torneig[] tornejos = new Torneig[2];
+        boolean isJornadaActual = false;
+        //
+        Torneig torneigActual = new Torneig();
+        torneigActual.setIdTorneig(p_idTorneig);
+        //
+        Torneig torneigAnterior = new Torneig();
+        torneigAnterior.setIdTorneig(p_idTorneig);
+        //
+        //VBMigracioFCVB migracioAnterior = new VBMigracioFCVB();
+        VBMigracioFCVB21 migracioActual = new VBMigracioFCVB21();
+        //
+        Log.d("FCVB21 - JornadaInicial", "" + m_jornada);
+        // Torneig de la Jornada anterior
+        try {
+            migracioActual.getResultatsTorneig(torneigActual, 1); //
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        //
+        tornejos[0] = torneigActual;
+        tornejos[1] = torneigActual;
+        //
+        Log.d("FCVB21 - JornadaAnterior", "" + tornejos[0].getPartitsTorneig().getNumJornada());
+        LogCACA.afegirLog("FCVB21 - JornadaAnterior" + " - " + tornejos[0].getPartitsTorneig().getNumJornada() + " - " +
+                tornejos[0].getNomCategoria() + " - " + tornejos[0].getNomDivisio() + " - " + tornejos[0].getNomGrup());
+
+        Log.d("FCVB21 - JornadaActual", "" + tornejos[1].getPartitsTorneig().getNumJornada());
+        LogCACA.afegirLog("FCVB21 - JornadaActual" + " - " + tornejos[1].getPartitsTorneig().getNumJornada() + " - " +
+                tornejos[1].getNomCategoria() + " - " + tornejos[1].getNomDivisio() + " - " + tornejos[1].getNomGrup());
+        //
         return tornejos;
     }
 

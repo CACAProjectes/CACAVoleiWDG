@@ -7,15 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
-
+import org.json.JSONException;
 import es.xuan.cacavoleiwdg.logs.LogCACA;
-import es.xuan.cacavoleiwdg.migracio.VBMigracioFCVB;
 import es.xuan.cacavoleiwdg.migracio.VBMigracioFCVB21;
-import es.xuan.cacavoleiwdg.model.Torneig;
-import es.xuan.cacavoleiwdg.model.Tornejos;
 import es.xuan.cacavoleiwdg.varis.Constants;
 import es.xuan.cacavoleiwdg.varis.Utils;
 
@@ -30,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         //
         iniXarxesSocials();
         //
-        iniTornejos();
+        //iniTornejos();
         //
         finalitzar();
     }
@@ -38,7 +33,11 @@ public class MainActivity extends AppCompatActivity {
     private void iniTornejos() {
         //VBMigracioFCVB migracio = new VBMigracioFCVB();
         VBMigracioFCVB21 migracio = new VBMigracioFCVB21();
-        migracio.llistatTornejosEquips();
+        try {
+            migracio.llistatTornejosEquips();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
     private void iniXarxesSocials() {
         final Vibrator vibr = (Vibrator) getSystemService(VIBRATOR_SERVICE);
