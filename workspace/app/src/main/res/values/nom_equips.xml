@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="equips">
-        <item>CD Badajoz - SM2 - Grup: A - 9998</item>
-        <item>CV RUBI - INF - Grup: E - 2122</item>
+        <item>CD Badajoz - SM2 - A - 9998</item>
+        <item>CV RUBI - 2ª DIVISIÓ INFANTIL FEMENINA - E - 2122</item>
     </string-array>
 </resources>

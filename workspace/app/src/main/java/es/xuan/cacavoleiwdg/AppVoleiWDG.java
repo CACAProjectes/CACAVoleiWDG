@@ -71,9 +71,9 @@ public class AppVoleiWDG extends AppWidgetProvider {
             try {
                 int idTorneig = Integer.parseInt(strWidgetEquip[3]);
                 // Tornejos de la FCVB i RFEVB
-                Torneig[] tornejos = llegirTorneig(idTorneig);       // Jornada actual i anterior
+                Torneig tornejos = llegirTorneig(idTorneig);       // Jornada actual i anterior
                 //
-                omplirDades(p_context, p_appWidgetManager, p_appWidgetId, tornejos, strWidgetEquip[0]);
+                omplirDades(p_context, p_appWidgetManager, p_appWidgetId, tornejos, strWidgetEquip);
                 //
             } catch (Exception ex) {
                 LogCACA.afegirLog("actualitzarDades - Error: " + ex);
@@ -82,35 +82,36 @@ public class AppVoleiWDG extends AppWidgetProvider {
     }
 
     private static void omplirDades(Context p_context, AppWidgetManager p_appWidgetManager,
-                                    int p_appWidgetId, Torneig[] p_tornejos, String p_nomEquip) {
+                                    int p_appWidgetId, Torneig p_tornejos, String[] pDadesEquip) {
         RemoteViews views = new RemoteViews(p_context.getPackageName(), R.layout.app_w_g_volei);
-        /*
-            p_tornejos[0] - > Torneig Anterior
-            p_tornejos[1] - > Torneig Actual
-         */
+        // CV RUBI - INF - Grup: E - 2122
         // DIVISIÓ
-        Vista.omplirDadesDivisio(p_context, views, p_tornejos[1]);
+        if (p_tornejos.getNomDivisio() == null || p_tornejos.getNomDivisio().equals(""))
+            p_tornejos.setNomDivisio(pDadesEquip[1]);
+        Vista.omplirDadesDivisio(p_context, views, p_tornejos);
         // GRUP
-        Vista.omplirDadesGrup(p_context, views, p_tornejos[1]);
+        if (p_tornejos.getNomGrup() == null || p_tornejos.getNomGrup().equals(""))
+            p_tornejos.setNomGrup(pDadesEquip[2]);
+        Vista.omplirDadesGrup(p_context, views, p_tornejos);
         // JORNADA I DATA
-        Vista.omplirDadesJornada(p_context, views, p_tornejos[1]);
+        Vista.omplirDadesJornada(p_context, views, p_tornejos);
         // PARTITS JORNADA ACTUAL
-        Vista.omplirDadesPartitsJornada(p_context, views, p_tornejos[1].getPartitsTorneig().getPartitsResultats(), p_tornejos[1].getPartitsTorneig().getPartitsResultats(), p_nomEquip);
+        Vista.omplirDadesPartitsJornada(p_context, views, p_tornejos.getPartitsTorneig().getPartitsResultats(), p_tornejos.getPartitsTorneig().getPartitsResultats(), pDadesEquip[0]);
         // PARTITS JORNADA ANTERIOR
-        Vista.omplirDadesPartitsAnteriors(p_context, views, p_tornejos[1].getPartitsTorneig().getPartitsJugats(), p_nomEquip);
+        Vista.omplirDadesPartitsAnteriors(p_context, views, p_tornejos.getPartitsTorneig().getPartitsJugats(), pDadesEquip[0]);
         // PARTITS JORNADA SEGÜENT
-        Vista.omplirDadesPartitsSeguents(p_context, views, p_tornejos[1].getPartitsTorneig().getPartitsProxims(), p_nomEquip);
+        Vista.omplirDadesPartitsSeguents(p_context, views, p_tornejos.getPartitsTorneig().getPartitsProxims(), pDadesEquip[0]);
         // CLASSIFICACIÓ
-        //Vista.omplirClassificacio(p_context, views, p_tornejos[1].getClassificacio(), p_nomEquip);
+        //Vista.omplirClassificacio(p_context, views, p_tornejos.getClassificacio(), p_nomEquip);
         // Refrescar WIDGET
         Vista.refrescarWidgetUpdate(p_context, views, p_appWidgetId);
         //
-        Vista.enllacarXarxesSocials(p_context, views, p_tornejos[1]);
+        Vista.enllacarXarxesSocials(p_context, views, p_tornejos);
         //Request that the AppWidgetManager updates the application widget
         p_appWidgetManager.updateAppWidget(p_appWidgetId, views);
     }
 
-    private static Torneig[] llegirTorneig(int p_idTorneig) {
+    private static Torneig llegirTorneig(int p_idTorneig) {
         /*
             4368 - 2ª DIVISIÓ JUVENIL FEMENINA  C
             4398 - 3ª DIVISIÓ JUVENIL FEMENINA  I
@@ -126,8 +127,7 @@ public class AppVoleiWDG extends AppWidgetProvider {
             return llegirTorneigRFEVB(p_idTorneig);
     }
 
-    private static Torneig[] llegirTorneigFCVB21(int p_idTorneig) {
-        Torneig[] tornejos = new Torneig[2];
+    private static Torneig llegirTorneigFCVB21(int p_idTorneig) {
         boolean isJornadaActual = false;
         //
         Torneig torneigActual = new Torneig();
@@ -147,22 +147,18 @@ public class AppVoleiWDG extends AppWidgetProvider {
             e.printStackTrace();
         }
         //
-        tornejos[0] = torneigActual;
-        tornejos[1] = torneigActual;
-        //
-        Log.d("FCVB21 - JornadaAnterior", "" + tornejos[0].getPartitsTorneig().getNumJornada());
-        LogCACA.afegirLog("FCVB21 - JornadaAnterior" + " - " + tornejos[0].getPartitsTorneig().getNumJornada() + " - " +
-                tornejos[0].getNomCategoria() + " - " + tornejos[0].getNomDivisio() + " - " + tornejos[0].getNomGrup());
+        Log.d("FCVB21 - JornadaAnterior", "" + torneigActual.getPartitsTorneig().getNumJornada());
+        LogCACA.afegirLog("FCVB21 - JornadaAnterior" + " - " + torneigActual.getPartitsTorneig().getNumJornada() + " - " +
+                torneigActual.getNomCategoria() + " - " + torneigActual.getNomDivisio() + " - " + torneigActual.getNomGrup());
 
-        Log.d("FCVB21 - JornadaActual", "" + tornejos[1].getPartitsTorneig().getNumJornada());
-        LogCACA.afegirLog("FCVB21 - JornadaActual" + " - " + tornejos[1].getPartitsTorneig().getNumJornada() + " - " +
-                tornejos[1].getNomCategoria() + " - " + tornejos[1].getNomDivisio() + " - " + tornejos[1].getNomGrup());
+        Log.d("FCVB21 - JornadaActual", "" + torneigActual.getPartitsTorneig().getNumJornada());
+        LogCACA.afegirLog("FCVB21 - JornadaActual" + " - " + torneigActual.getPartitsTorneig().getNumJornada() + " - " +
+                torneigActual.getNomCategoria() + " - " + torneigActual.getNomDivisio() + " - " + torneigActual.getNomGrup());
         //
-        return tornejos;
+        return torneigActual;
     }
 
-    private static Torneig[] llegirTorneigRFEVB(int p_idTorneig) {
-        Torneig[] tornejos = new Torneig[2];
+    private static Torneig llegirTorneigRFEVB(int p_idTorneig) {
         //
         VBMigracioRFEVB migracioActual = new VBMigracioRFEVB();
         Torneig torneigActual = migracioActual.getTornejos(p_idTorneig);
@@ -177,23 +173,19 @@ public class AppVoleiWDG extends AppWidgetProvider {
         } catch (Exception ex) {
             Log.e("llegirTorneigRFEVB", ex.toString());
         }
-       //
-        tornejos[0] = torneigActual;
-        tornejos[1] = torneigActual;
         //
-        Log.d("RFEVB - JornadaAnterior", "" + tornejos[0].getPartitsTorneig().getNumJornada());
-        LogCACA.afegirLog("RFEVB - JornadaAnterior" + " - " + tornejos[0].getPartitsTorneig().getNumJornada() + " - " +
-                tornejos[0].getNomCategoria() + " - " + tornejos[0].getNomDivisio() + " - " + tornejos[0].getNomGrup());
+        Log.d("RFEVB - JornadaAnterior", "" + torneigActual.getPartitsTorneig().getNumJornada());
+        LogCACA.afegirLog("RFEVB - JornadaAnterior" + " - " + torneigActual.getPartitsTorneig().getNumJornada() + " - " +
+                torneigActual.getNomCategoria() + " - " + torneigActual.getNomDivisio() + " - " + torneigActual.getNomGrup());
 
-        Log.d("RFEVB - JornadaActual", "" + tornejos[1].getPartitsTorneig().getNumJornada());
-        LogCACA.afegirLog("RFEVB - JornadaActual" + " - " + tornejos[1].getPartitsTorneig().getNumJornada() + " - " +
-                tornejos[1].getNomCategoria() + " - " + tornejos[1].getNomDivisio() + " - " + tornejos[1].getNomGrup());
+        Log.d("RFEVB - JornadaActual", "" + torneigActual.getPartitsTorneig().getNumJornada());
+        LogCACA.afegirLog("RFEVB - JornadaActual" + " - " + torneigActual.getPartitsTorneig().getNumJornada() + " - " +
+                torneigActual.getNomCategoria() + " - " + torneigActual.getNomDivisio() + " - " + torneigActual.getNomGrup());
         //
-        return tornejos;
+        return torneigActual;
     }
 
-    private static Torneig[] llegirTorneigFCVB(int p_idTorneig) {
-        Torneig[] tornejos = new Torneig[2];
+    private static Torneig llegirTorneigFCVB(int p_idTorneig) {
         boolean isJornadaActual = false;
         //
         Torneig torneigActual = new Torneig();
@@ -221,20 +213,19 @@ public class AppVoleiWDG extends AppWidgetProvider {
             Log.d("FCVB - JornadaBucle", "" + m_jornada);
         } while (isJornadaActual);
         //
-        tornejos[0] = torneigAnterior;
-        tornejos[1] = torneigActual;
+        torneigActual = torneigActual;
         //
         m_jornada = torneigActual.getPartitsTorneig().getNumJornada();
         //
-        Log.d("FCVB - JornadaAnterior", "" + tornejos[0].getPartitsTorneig().getNumJornada());
-        LogCACA.afegirLog("FCVB - JornadaAnterior" + " - " + tornejos[0].getPartitsTorneig().getNumJornada() + " - " +
-                tornejos[0].getNomCategoria() + " - " + tornejos[0].getNomDivisio() + " - " + tornejos[0].getNomGrup());
+        Log.d("FCVB - JornadaAnterior", "" + torneigActual.getPartitsTorneig().getNumJornada());
+        LogCACA.afegirLog("FCVB - JornadaAnterior" + " - " + torneigActual.getPartitsTorneig().getNumJornada() + " - " +
+                torneigActual.getNomCategoria() + " - " + torneigActual.getNomDivisio() + " - " + torneigActual.getNomGrup());
 
-        Log.d("FCVB - JornadaActual", "" + tornejos[1].getPartitsTorneig().getNumJornada());
-        LogCACA.afegirLog("FCVB - JornadaActual" + " - " + tornejos[1].getPartitsTorneig().getNumJornada() + " - " +
-                tornejos[1].getNomCategoria() + " - " + tornejos[1].getNomDivisio() + " - " + tornejos[1].getNomGrup());
+        Log.d("FCVB - JornadaActual", "" + torneigActual.getPartitsTorneig().getNumJornada());
+        LogCACA.afegirLog("FCVB - JornadaActual" + " - " + torneigActual.getPartitsTorneig().getNumJornada() + " - " +
+                torneigActual.getNomCategoria() + " - " + torneigActual.getNomDivisio() + " - " + torneigActual.getNomGrup());
         //
-        return tornejos;
+        return torneigActual;
     }
 
     private static boolean comprovarJornadaActual(String p_dataJornada) {

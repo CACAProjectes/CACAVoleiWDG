@@ -383,12 +383,6 @@ public class VBMigracioRFEVB extends VBMigracio {
             return pStrHora.trim();
         return "";
     }
-    private int parsearJornada(String pStrJornada) {
-        //	<td colspan="7" style="background:beige;"><div align="center" style="background:beige; font-size:12px;"><strong>JORNADA 1<strong></div></td>
-        if (pStrJornada != null && !pStrJornada.equals(""))
-            return Integer.parseInt(pStrJornada.trim());
-        return 0;
-    }
 
     public Torneig getTornejos(int p_idTorneig) {
         String[] strUrls = CTE_URLS_RFEVB_COMPETICIONS;

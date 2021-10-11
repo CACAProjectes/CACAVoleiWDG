@@ -18,7 +18,7 @@ import es.xuan.cacavoleiwdg.varis.Utils;
 
 public class Vista {
 
-    private static int CTE_TAMANY_EQUIP = 19;
+    private static int CTE_TAMANY_EQUIP = 20;
     private static int CTE_TAMANY_PAVELLO = 27;
     private static int CTE_TAMANY_NOM_EQUIP = 30;
     private static int CTE_TAMANY_SETS = 2;

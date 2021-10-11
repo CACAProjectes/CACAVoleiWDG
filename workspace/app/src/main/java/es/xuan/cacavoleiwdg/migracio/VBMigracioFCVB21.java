@@ -81,12 +81,19 @@ public class VBMigracioFCVB21 extends VBMigracio {
             if (nomGrup.equalsIgnoreCase(CTE_GRUP_E)) {
                 String jornadaActual = arr.getJSONObject(i).getString("jornadaActual");
                 int iJornadaActual = Utils.stringToInt(jornadaActual);
-                //String dataJornadaActual = "3"; //arr.getJSONObject(i).getString("fecha");
                 partitsTorneig.setNumJornada(Utils.stringToInt(jornadaActual));
-
-                //partitsTorneig.setDataJornada(strSplit[1].trim());
+                // Data jornada
+                JSONArray arrJornades = arr.getJSONObject(i).getJSONArray("jornadas"); //
+                for (int j = 0; j < arrJornades.length(); j++) {
+                    String numJornada = arrJornades.getJSONObject(j).getString("jornada");
+                    int iJornada = Utils.stringToInt(numJornada);
+                    if (iJornada == iJornadaActual) {
+                        partitsTorneig.setDataJornada(arrJornades.getJSONObject(j).getString("fechaMin"));
+                        break;
+                    }
+                }
                 pTorneig.setPartitsTorneig(partitsTorneig);
-                System.out.println("Jornada actual: " + jornadaActual);
+                //System.out.println("Jornada actual: " + jornadaActual);
                 //
                 JSONArray arrClassificacio = arr.getJSONObject(i).getJSONArray("clasificacion"); //
                 String strClassificacio = "";
@@ -110,6 +117,7 @@ public class VBMigracioFCVB21 extends VBMigracio {
                     if (iJornada >= iJornadaActual - 1 &&
                             iJornada <= iJornadaActual + 1) {
                         String strDataPartit = arrPartidos.getJSONObject(j).getString("fecha");
+                        String strHoraPartit = arrPartidos.getJSONObject(j).getString("hora");
                         String strUbicacio = arrPartidos.getJSONObject(j).getString("idInstalacion");
                         String strNomPavello = arrPartidos.getJSONObject(j).getString("instalacion");
                         String strEquipLocal = arrPartidos.getJSONObject(j).getString("local");
@@ -129,7 +137,7 @@ public class VBMigracioFCVB21 extends VBMigracio {
                         // Partit
                         pPartit = new Partit();
                         pPartit.setJornada(Utils.stringToInt(numJornada));
-                        pPartit.setDataPartit(Utils.string2DataRed(strDataPartit));
+                        pPartit.setDataPartit(Utils.string2Data(strDataPartit + " " + strHoraPartit));
                         pPartit.setEquipLocal(strEquipLocal);
                         pPartit.setEquipVisitant(strEquipVisitant);
                         pPartit.setResultatLocal(Utils.stringToInt(strResLocal));
