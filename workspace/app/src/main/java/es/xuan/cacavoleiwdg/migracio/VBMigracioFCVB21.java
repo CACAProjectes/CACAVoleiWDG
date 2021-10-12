@@ -1,7 +1,5 @@
 package es.xuan.cacavoleiwdg.migracio;
 
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,40 +9,33 @@ import es.xuan.cacavoleiwdg.model.Partit;
 import es.xuan.cacavoleiwdg.model.Partits;
 import es.xuan.cacavoleiwdg.model.Pavello;
 import es.xuan.cacavoleiwdg.model.Torneig;
-import es.xuan.cacavoleiwdg.model.Tornejos;
 import es.xuan.cacavoleiwdg.varis.Utils;
 
 public class VBMigracioFCVB21 extends VBMigracio {
 
-    private final static String CTE_URL_FCVB_COMPETICIONS = "https://fcvolei.cat/apicompeticiones.php?slug=2a-divisio-infantil-femenina-2122";
-    private static final String CTE_GRUP_E = "GRUP E";
+    private String CTE_URL_FCVB_UBICACIO = "https://fcvolei.cat/instalaciones/?instalacion=";
 
     public VBMigracioFCVB21() {
     }
 
-    public Tornejos getTornejos() {
-        Tornejos tornejos = new Tornejos();
-        try {
-            tornejos.add(getIdTorneig(CTE_URL_FCVB_COMPETICIONS)); // "https://fcvolei.cat/apicompeticiones.php?slug=2a-divisio-infantil-femenina-2122";
-        } catch (Exception ex) {
-            System.err.println(ex);
+    public Torneig getTornejos(String[] pUrlsTornejos, String[] p_nomTorneig) {
+        // <item>FCVOLEI - LLIGA CATALANA DIVISIO DHONOR FEMENINA - A - 10</item>
+        int iNumTorneig = Utils.stringToInt(p_nomTorneig[3]);
+        for (String strUrl : pUrlsTornejos) {
+            String[] strUrlAux = strUrl.split(" - ");
+            // <item>10 - https://fcvolei.cat/voleibol/lliga-catalana-divisio-dhonor-femenina-2122/</item>
+            if (Utils.stringToInt(strUrlAux[0]) == iNumTorneig) {
+                Torneig torneig = new Torneig();
+                torneig.setUrlPrincipal(strUrlAux[1]);
+                torneig.setUrlClassificacio(strUrlAux[1]);
+                torneig.setIdTorneig(Utils.stringToInt(strUrlAux[0]));
+                torneig.setNomGrup(p_nomTorneig[2]);
+                return torneig;
+            }
         }
-        return tornejos;
+        return null;
     }
-
-    private Torneig getIdTorneig(String pUrl) {
-        /*
-         * "https://fcvolei.cat/apicompeticiones.php?slug=2a-divisio-infantil-femenina-2122";
-         */
-        Torneig torneig = new Torneig();
-        try {
-            torneig.setIdTorneig(Integer.parseInt(pUrl.substring(pUrl.lastIndexOf("-") + 1)));
-        } catch(Exception ex) {
-            System.err.println(ex);
-        }
-        return torneig;
-    }
-
+    /*
     public void llistatTornejosEquips () throws JSONException {
         for (Torneig torneig : getTornejos().getLlista()) {
             getResultatsTorneig(torneig, 1);
@@ -62,9 +53,9 @@ public class VBMigracioFCVB21 extends VBMigracio {
             }
         }
     }
-
-    public void getResultatsTorneig(Torneig pTorneig, int pNumJornada) throws JSONException {
-        String strJson = getContingutURL(CTE_URL_FCVB_COMPETICIONS);
+    */
+    public void getResultatsTorneig(Torneig pTorneig) throws JSONException {
+        String strJson = getContingutURL(pTorneig.getUrlPrincipal());
         //
         JSONObject obj = new JSONObject(strJson);
         ///////////////////////////////////////
@@ -78,7 +69,7 @@ public class VBMigracioFCVB21 extends VBMigracio {
         for (int i = 0; i < arr.length(); i++)
         {
             String nomGrup = arr.getJSONObject(i).getString("nombreGrupo");
-            if (nomGrup.equalsIgnoreCase(CTE_GRUP_E)) {
+            if (nomGrup.equalsIgnoreCase("GRUP " + pTorneig.getNomGrup())) {
                 String jornadaActual = arr.getJSONObject(i).getString("jornadaActual");
                 int iJornadaActual = Utils.stringToInt(jornadaActual);
                 partitsTorneig.setNumJornada(Utils.stringToInt(jornadaActual));
@@ -143,7 +134,7 @@ public class VBMigracioFCVB21 extends VBMigracio {
                         pPartit.setResultatLocal(Utils.stringToInt(strResLocal));
                         pPartit.setResultatVisitant(Utils.stringToInt(strResVisitant));
                         pPartit.setResultatSets(getResultatsSets(arrPartidos.getJSONObject(j)));	// 25-16/27-25/25-20
-                        pPartit.setPavello(obtenirAdrecesURL(CTE_URL_FCVB_COMPETICIONS + strUbicacio, strNomPavello));
+                        pPartit.setPavello(obtenirAdrecesURL(CTE_URL_FCVB_UBICACIO + strUbicacio, strNomPavello));
                         pPartit.setArbitres(arbitres);
                         if (iJornada == iJornadaActual - 1) {
                             // Anterior
@@ -186,7 +177,6 @@ public class VBMigracioFCVB21 extends VBMigracio {
         }
         return strRes;
     }
-
 
     private Pavello obtenirAdrecesURL(String pUrlUbicacio, String pNom) {
         Pavello pavello = new Pavello(pUrlUbicacio, pNom);

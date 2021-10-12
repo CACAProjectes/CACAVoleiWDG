@@ -20,6 +20,7 @@ public class Utils implements Serializable {
     public static final String CTE_FORMAT_DATA_RED_BD = "yyyy-MM-dd";
 	public static final String CTE_FORMAT_DATA_COMP = "dd/MM/yyyy HH:mm:ss";
 	public static final String CTE_FORMAT_DATA = "dd/MM/yyyy HH:mm";
+	public static final String CTE_FORMAT_DATA_YY = "dd/MM/yy (HH:mm)";
 	public static final String CTE_FORMAT_DATA_RED = "dd/MM/yyyy";
 	public static final String CTE_FORMAT_DATA_HORA = "HH:mm";
 	public static final String CTE_FORMAT_DATA_FILE = "dd-MM";
@@ -95,6 +96,15 @@ public class Utils implements Serializable {
 		} catch (ParseException e) {
 			//e.printStackTrace();
 		} 
+		return null;
+	}
+	public static Date string2DataYY(String p_data) {
+		// Fecha larga
+		SimpleDateFormat dateFormat = new SimpleDateFormat(CTE_FORMAT_DATA_YY, Locale.getDefault());
+		try {
+			return dateFormat.parse(p_data.trim());
+		} catch (ParseException e) {
+		}
 		return null;
 	}
 	public static Date string2Data(String p_data) {

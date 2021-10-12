@@ -1,7 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="equips">
-        <item>CD Badajoz - SM2 - A - 9998</item>
-        <item>CV RUBI - 2ª DIVISIÓ INFANTIL FEMENINA - E - 2122</item>
+
+        <item>RFEVB - Liga Iberdrola - A - 1</item>
+        <item>RFEVB - Superliga Masculina - A - 2</item>
+        <item>RFEVB - Superliga Masculina 2 - A - 3</item>
+        <item>CD Badajoz Extremadura - Superliga Masculina 2 - A - 3</item>
+        <item>RFEVB - Superliga Masculina 2 - B - 4</item>
+        <item>RFEVB - Superliga Masculina 2 - C - 5</item>
+
+        <item>FCVOLEI - LLIGA CATALANA DIVISIO DHONOR FEMENINA - A - 10</item>
+        <item>FCVOLEI - LLIGA CATALANA DIVISIO DHONOR MASCULINA - A - 11</item>
+        <item>FCVOLEI - LLIGA CATALANA SUPERLIGA FEMENINA - A - 12</item>
+        <item>FCVOLEI - LLIGA CATALANA SUPERLIGA MASCULINA - A - 13</item>
+        <item>FCVOLEI - 1ª DIVISIÓ SÈNIOR MASCULINA - A - 14</item>
+        <item>FCVOLEI - 1ª DIVISIÓ SÈNIOR FEMENINA - A - 15</item>
+        <item>FCVOLEI - 2ª DIVISIÓ SÈNIOR MASCULINA - A - 16</item>
+        <item>FCVOLEI - 2ª DIVISIÓ SÈNIOR FEMENINA - A - 17</item>
+        <item>FCVOLEI - 3ª DIVISIÓ SÈNIOR FEMENINA - A - 18</item>
+        <item>FCVOLEI - 4ª DIVISIÓ SÈNIOR FEMENINA - A - 19</item>
+        <item>FCVOLEI - LLIGA AMATEUR MIXTE - A - 20</item>
+        <item>FCVOLEI - 1ª DIVISIÓ JUVENIL FEMENINA - A - 21</item>
+        <item>FCVOLEI - 1ª DIVISIÓ CADET FEMENINA - A - 22</item>
+        <item>FCVOLEI - 1ª DIVISIÓ JUVENIL MASCULINA - A - 23</item>
+        <item>FCVOLEI - 2ª DIVISIÓ JUVENIL FEMENINA - A - 24</item>
+        <item>FCVOLEI - 2ª DIVISIÓ CADET FEMENINA - A - 25</item>
+        <item>FCVOLEI - 3ª DIVISIÓ JUVENIL FEMENINA - A - 26</item>
+        <item>FCVOLEI - 3ª DIVISIÓ CADET FEMENINA - A - 27</item>
+        <item>FCVOLEI - LLIGA PREFERENT JUVENIL FEMENÍ - A - 28</item>
+        <item>FCVOLEI - LLIGA PREFERENT CADET FEMENINA - A - 29</item>
+        <item>FCVOLEI - 1ª DIVISIÓ CADET MASCULINA - A - 30</item>
+        <item>FCVOLEI - 1ª DIVISIÓ INFANTIL MASCULINA - A - 31</item>
+        <item>FCVOLEI - 1ª DIVISIÓ INFANTIL FEMENINA - A - 32</item>
+        <item>FCVOLEI - 2ª DIVISIÓ INFANTIL FEMENINA - A - 33</item>
+        <item>CV RUBI - 2ª DIVISIÓ INFANTIL FEMENINA - E - 33</item>
+        <item>FCVOLEI - PREFERENT INFANTIL FEMENÍ - A - 34</item>
+        <item>FCVOLEI - LLIGA ALEVÍ MIXT - A - 35</item>
+        <item>FCVOLEI - 1ª DIVISIÓ JUNIOR FEMENINA - A - 36</item>
+        <item>FCVOLEI - 1ª DIVISIÓ JUNIOR MASCULINA - A - 37</item>
+
     </string-array>
 </resources>

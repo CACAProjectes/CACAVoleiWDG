@@ -14,27 +14,9 @@ import es.xuan.cacavoleiwdg.varis.Constants;
 import es.xuan.cacavoleiwdg.varis.Utils;
 
 public class VBMigracioRFEVB extends VBMigracio {
-    //
-    private final static String[] CTE_URL_RFEVB_CLASSIFICACIO = new String[] {
-            "http://www.rfevb.com/superliga-masculina-clasificacion",
-            "http://www.rfevb.com/liga-iberdrola-clasificacion",
-            "http://www.rfevb.com/superliga-masculina-2-grupo-c-clasificacion"
-    };
 
-    private final static String[] CTE_URLS_RFEVB_COMPETICIONS = new String[] {
-            "http://www.rfevb.com/svm-calendario",
-            "http://www.rfevb.com/liga-iberdrola-calendario",
-            "http://www.rfevb.com/sm2-calendario-grupo-c"
-    };
-    private final static int[] CTE_IDS_RFEVB_TORNEIG = new int[] {
-            9999,
-            9998,
-            9997
-    };
     public VBMigracioRFEVB() {
-        super();
     }
-
 
     private String convertClassificacio(String pTableEquips) {
         String arrEquips = "";
@@ -86,7 +68,7 @@ public class VBMigracioRFEVB extends VBMigracio {
         strCelda = Utils.netejarText(strCelda);
         return strCelda;
     }
-
+    /*
     private String getClassificacio(String strUrl) {
         try {
             int ll1 = 0, ll2 = 0;
@@ -103,129 +85,142 @@ public class VBMigracioRFEVB extends VBMigracio {
         }
         return "";
     }
-
-    public Tornejos getTornejos() {
-        Tornejos tornejos = new Tornejos();
-        String[] strUrls = CTE_URLS_RFEVB_COMPETICIONS;
-        int iComptador = 0;
-        for (String strUrl : strUrls) {
-            Torneig torneig = new Torneig();
-            torneig.setUrlPrincipal(CTE_URLS_RFEVB_COMPETICIONS[iComptador]);
-            torneig.setUrlClassificacio(CTE_URL_RFEVB_CLASSIFICACIO[iComptador]);
-            tornejos.add(torneig);
-            iComptador++;
+    */
+    public Torneig getTornejos(String[] pUrlsTornejos, String[] p_nomTorneig) {
+        // <item>RFEVB - Liga Iberdrola - A - 1</item>
+        int iNumTorneig = Utils.stringToInt(p_nomTorneig[3]);
+        for (String strUrl : pUrlsTornejos) {
+            String[] strUrlAux = strUrl.split(" - ");
+            // <item>1 - http://www.rfevb.com/superliga-masculina-clasificacion</item>
+            if (Utils.stringToInt(strUrlAux[0]) == iNumTorneig) {
+                Torneig torneig = new Torneig();
+                torneig.setUrlPrincipal(strUrlAux[1]);
+                torneig.setUrlClassificacio(strUrlAux[1]);
+                torneig.setIdTorneig(Utils.stringToInt(strUrlAux[0]));
+                torneig.setNomGrup(p_nomTorneig[2]);
+                return torneig;
+            }
         }
-        return tornejos;
+        return null;
     }
 
-    public void getResultatsTorneig(Torneig pTorneig, int pNumJornada) {
+    public void getResultatsTorneig(Torneig pTorneig) {
         Partits partitsTorneig = new Partits();
-        Partit pPartit = null;
+        Partit partit = null;
         pTorneig.setPartitsTorneig(partitsTorneig);
         int ll1 = 0, ll2 = 0, ll3 = 0;
         int iComptador = 0;
         try {
             //
             String strContingut = getContingutURL(pTorneig.getUrlPrincipal());
-            strContingut = eliminarCabeceraPagina(strContingut, "<table width=\"100%\" border=\"1\">");
             //
-            ll2 = 0;
-            // <strong>JORNADA
-            //String marcaJornada = "<strong>JORNADA";
-            // <div align="center"><strong>
-            String marcaFecha = "<div align=\"center\"><strong>";
-            String marcaStrongIni = "<strong>";
-            String marcaStrongFin = "</strong>";
+            int iClasificacio = strContingut.indexOf("<!-- CLASIFICACI");
+            int iPartitsProxims = strContingut.indexOf("<!-- PROXIMOS ENCUENTROS -->");
+            //
             while (true) {
-                //ll1 = strContingut.indexOf(marcaJornada, ll2);
-                ll3 = strContingut.indexOf(marcaFecha, ll2);
-                if ((ll3 < 0) || (ll2 < 0) || (ll1 < 0))
-                    break;
+                // Partits actuals
+                partit = new Partit();
                 /*
-                if (ll1 > 0 && ll1 < ll3) {
-                    // Encuetra el texto de Jornada abans que el partit
-                    ll2 = strContingut.indexOf(marcaStrongIni, ll1 + 1);
-                    pNumJornada = parsearJornada(strContingut.substring(ll1 + marcaJornada.length(), ll2));
-                }
+                          <td>6. CV Almendralejo Extremadura - CyL Palencia 2022</td>
+                          <td >23/10/21 (18:30) </td>
+                          <td>0 - 0 (0-0/0-0/0-0/0-0/0-0)</td>
                  */
-                ll2 = strContingut.indexOf(marcaStrongFin, ll3);
-                String dia = parsearDia(strContingut.substring(ll3 + marcaFecha.length(), ll2));
-                String marcaHora = "<br><br>";
-                ll1 = strContingut.indexOf(marcaHora, ll2);
-                if ((ll3 < 0) || (ll2 < 0) || (ll1 < 0))
+                ll1 = strContingut.indexOf("<td>", ll2);
+                if (ll1 > iClasificacio)    // Fi partits actuals
                     break;
-                String marcaDIVFin = "</div>";
-                ll2 = strContingut.indexOf(marcaDIVFin, ll1);
-                String hora = parsearHora(strContingut.substring(ll1 + marcaHora.length(), ll2));
-                // <img src=http://licenciasrfevb.icons.es/clubes/logos/web/cl00508&period;png width=50 height=auto>
-                //String marcaPartit = "licenciasrfevb.icons.es";
-                //ll1 = strContingut.indexOf(marcaPartit, ll2);
-                // <td width="42%"><div align="right"><strong>
-                String marcaEquip1 = "<td width=\"42%\"><div align=\"right\"><strong>";
-                ll1 = strContingut.indexOf(marcaEquip1, ll1);
-                ll2 = strContingut.indexOf(marcaStrongFin, ll1);
-                if ((ll3 < 0) || (ll2 < 0) || (ll1 < 0))
-                    break;
-                String equipLocal = parsearEquip(strContingut.substring(ll1 + marcaEquip1.length(), ll2));
-                // Marcador
-                //	<td width="2%"> <strong>3</strong></td>
-                String marcaResultatLocal = "<td width=\"2%\"> <strong>";
-                ll1 = strContingut.indexOf(marcaResultatLocal, ll1);
-                ll2 = strContingut.indexOf(marcaStrongFin, ll1);
-                if ((ll3 < 0) || (ll2 < 0) || (ll1 < 0))
-                    break;
-                String resultatLocal = parsearEquip(strContingut.substring(ll1 + marcaResultatLocal.length(), ll2));
-                //	<td width="2%"><strong>0</strong></td>
-                String marcaResultatVisitant = "<td width=\"2%\"><strong>";
-                ll1 = strContingut.indexOf(marcaResultatVisitant, ll1);
-                ll2 = strContingut.indexOf(marcaStrongFin, ll1);
-                if ((ll3 < 0) || (ll2 < 0) || (ll1 < 0))
-                    break;
-                String resultatVisitant = parsearEquip(strContingut.substring(ll1 + marcaResultatVisitant.length(), ll2));
-                // <td width="42%"><div align="left"><strong>
-                String marcaEquip2 = "<td width=\"42%\"><div align=\"left\"><strong>";
-                ll1 = strContingut.indexOf(marcaEquip2, ll2);
-                ll2 = strContingut.indexOf(marcaStrongFin, ll1);
-                if ((ll3 < 0) || (ll2 < 0) || (ll1 < 0))
-                    break;
-                String equipVisitant = parsearEquip(strContingut.substring(ll1 + marcaEquip2.length(), ll2));
-                // Lugar:
-                String marcaLugar = "<div align=\"center\">Lugar:";
-                ll1 = strContingut.indexOf(marcaLugar, ll2);
-                //</div>
-                ll2 = strContingut.indexOf(marcaDIVFin, ll1);
-                if ((ll3 < 0) || (ll2 < 0) || (ll1 < 0))
-                    break;
-                String nomPavello = parsearPavello(strContingut.substring(ll1 + marcaLugar.length(), ll2));
-                // <div align="center">
-                String marcaArbitres = "<div align=\"center\">";
-                ll1 = strContingut.indexOf(marcaArbitres, ll2);
-                ll2 = strContingut.indexOf(marcaDIVFin, ll1);
-                if ((ll3 < 0) || (ll2 < 0) || (ll1 < 0))
-                    break;
-                String nomArbitres = parsearArbitres(strContingut.substring(ll1 + marcaArbitres.length(), ll2));
+                ll2 = strContingut.indexOf("</td>", ll1);
+                parsearEquips(partit, strContingut.substring(ll1, ll2));
+                //String nomArbitres = parsearArbitres(strContingut.substring(ll1 + marcaArbitres.length(), ll2));
+                //somplirDadesDivisio(pPartit, pTorneig.getUrlPrincipal());
+                ll1 = strContingut.indexOf("<td", ll2);
+                ll2 = strContingut.indexOf("</td>", ll1);
+                parsearDataPartit(partit, strContingut.substring(ll1, ll2));
                 //
-                pPartit = new Partit();
-                omplirDadesDivisio(pPartit, pTorneig.getUrlPrincipal());
-                partitsTorneig.setDataJornada("");
-                pPartit.setJornada(pNumJornada);
-                pPartit.setEquipLocal(equipLocal);
-                pPartit.setEquipVisitant(equipVisitant);
-                pPartit.setResultatLocal(convertString2Integer(resultatLocal));
-                pPartit.setResultatVisitant(convertString2Integer(resultatVisitant));
-                pPartit.setDataPartit(sumarAny(Utils.string2Data(dia + " " + hora)));
-                pPartit.setPavello(convertString2Pavello(nomPavello));
-                pPartit.setArbitres(convertString2Arbitres(nomArbitres));
+                if (iComptador++ == 0) {
+                    partitsTorneig.setDataJornada(Utils.data2StringRed(partit.getDataPartit()));
+                    partitsTorneig.setNumJornada(1);
+                }
                 //
-                partitsTorneig.addJugats(pPartit);
+                ll1 = strContingut.indexOf("<td>", ll2);
+                ll2 = strContingut.indexOf("</td>", ll1);
+                parsearResultats(partit, strContingut.substring(ll1, ll2));
+                //
+                partitsTorneig.addJugats(partit);
+                partitsTorneig.addResultats(partit);
             }
+            /* TODO
             String strClasif = getClassificacio(pTorneig.getUrlClassificacio());
             pTorneig.setClassificacio(convertClassificacio(strClasif));
+            */
+            ll2 = iPartitsProxims;
+            while (true) {
+                // Partits pròxims
+                partit = new Partit();
+                /*
+                    <tr>
+                      <td>11</td>
+                      <td>30/10/21 (17:30) </td>
+                      <td>CyL Palencia 2022 - Voleibol Dumbr&iacute;a</td>
+                      <td>Campo de la Juventud</td>
+                    </tr>
+                 */
+                ll1 = strContingut.indexOf("<tr>", ll2);
+                if (ll1 < 0)
+                    break;
+                ll1 = strContingut.indexOf("<td>", ll1);
+                ll1 = strContingut.indexOf("<td>", ll1 + 1);
+                ll2 = strContingut.indexOf("</td>", ll1);
+                parsearDataPartit(partit, strContingut.substring(ll1, ll2));
+                ll1 = strContingut.indexOf("<td>", ll2);
+                ll2 = strContingut.indexOf("</td>", ll1);
+                parsearEquipsSeg(partit, strContingut.substring(ll1, ll2));
+                ll1 = strContingut.indexOf("<td>", ll2);
+                ll2 = strContingut.indexOf("</td>", ll1);
+                partit.setPavello(convertString2Pavello(Utils.parsearText(strContingut.substring(ll1 + 4, ll2))));
+                //
+                partitsTorneig.addProx(partit);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return;
     }
+
+    private void parsearResultats(Partit partit, String pText) {
+        // <td>0 - 0 (0-0/0-0/0-0/0-0/0-0)</td>
+        int ll1 = pText.indexOf(">") + 1;
+        int ll2 = pText.indexOf("(", ll1);
+        String[] strSets = pText.substring(ll1, ll2).trim().split("-");
+        partit.setResultatLocal(Utils.stringToInt(strSets[0].trim()));
+        partit.setResultatVisitant(Utils.stringToInt(strSets[1].trim()));
+        int ll3 = pText.indexOf(")", ll2);
+        partit.setResultatSets(pText.substring(ll2 + 1, ll3).trim());
+    }
+
+    private void parsearDataPartit(Partit partit, String pText) {
+        // <td >23/10/21 (18:30) </td>
+        int ll1 = pText.indexOf(">") + 1;
+        partit.setDataPartit(Utils.string2DataYY(pText.substring(ll1).trim()));
+    }
+
+    private void parsearEquips(Partit pPartit, String pText) {
+        // <td>6. CV Almendralejo Extremadura - CyL Palencia 2022</td>
+        int ll = pText.indexOf(".");
+        pText = pText.substring(ll + 1);
+        String[] strAux = pText.split("-");
+        pPartit.setEquipLocal(Utils.parsearText(strAux[0].trim()));
+        pPartit.setEquipVisitant(Utils.parsearText(strAux[1].trim()));
+    }
+    private void parsearEquipsSeg(Partit pPartit, String pText) {
+        // <td>CV Almendralejo Extremadura - CyL Palencia 2022</td>
+        int ll = pText.indexOf("<td>");
+        pText = pText.substring(ll + 4);
+        String[] strAux = pText.split("-");
+        pPartit.setEquipLocal(Utils.parsearText(strAux[0].trim()));
+        pPartit.setEquipVisitant(Utils.parsearText(strAux[1].trim()));
+    }
+
+    /*
     private void omplirDadesDivisio(Partit pPartit, String pUrl) {
 		/*
 		 * 	"http://www.rfevb.com/svm-calendario",
@@ -240,7 +235,7 @@ public class VBMigracioRFEVB extends VBMigracio {
 			"http://www.rfevb.com/primera-division-femenina-grupo-a-calendario",
 			"http://www.rfevb.com/primera-division-femenina-grupo-b-calendario",
 			"http://www.rfevb.com/primera-division-femenina-grupo-c-calendario"
-		 */
+		 *
         if (pUrl.contains("svm-calendario")) {
             pPartit.setDivisio("SVM");
             pPartit.setCategoria("Superliga Masculina");
@@ -326,17 +321,14 @@ public class VBMigracioRFEVB extends VBMigracio {
             pPartit.setIdTorneig(89988);
         }
     }
+     */
     private Date sumarAny(Date pData) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(pData);
         cal.add(Calendar.YEAR, 2000);
         return cal.getTime();
     }
-    private String eliminarCabeceraPagina(String pStrContingut, String pStrMarca) {
-        // <table width="100%" border="1">
-        int ind = pStrContingut.indexOf(pStrMarca);
-        return pStrContingut.substring(ind);
-    }
+
     private int convertString2Integer(String pResultatLocal) {
         if (pResultatLocal != null && !pResultatLocal.equals(""))
             return Integer.parseInt(pResultatLocal);
@@ -384,20 +376,5 @@ public class VBMigracioRFEVB extends VBMigracio {
         return "";
     }
 
-    public Torneig getTornejos(int p_idTorneig) {
-        String[] strUrls = CTE_URLS_RFEVB_COMPETICIONS;
-        int iComptador = 0;
-        for (String strUrl : strUrls) {
-            if (p_idTorneig == CTE_IDS_RFEVB_TORNEIG[iComptador]) {
-                Torneig torneig = new Torneig();
-                torneig.setUrlPrincipal(CTE_URLS_RFEVB_COMPETICIONS[iComptador]);
-                torneig.setUrlClassificacio(CTE_URL_RFEVB_CLASSIFICACIO[iComptador]);
-                torneig.setIdTorneig(p_idTorneig);
-                return torneig;
-            }
-            iComptador++;
-        }
-        return null;
-    }
 }
 

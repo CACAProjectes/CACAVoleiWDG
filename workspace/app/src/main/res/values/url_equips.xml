@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="urlEquips">
+
+        <item>1 - https://intranet.rfevb.com/rfevbcom/includes-html/competiciones/clasificacion321-conEncuentros-datos.php?IdCampeonato=4493&amp;Jornada=</item>
+        <item>2 - https://intranet.rfevb.com/rfevbcom/includes-html/competiciones/clasificacion321-conEncuentros-datos.php?IdCampeonato=4492&amp;Jornada=</item>
+        <item>3 - https://intranet.rfevb.com/rfevbcom/includes-html/competiciones/clasificacion321-conEncuentros-datos.php?IdCampeonato=4500&amp;Jornada=</item>
+        <item>4 - https://intranet.rfevb.com/rfevbcom/includes-html/competiciones/clasificacion321-conEncuentros-datos.php?IdCampeonato=4501&amp;Jornada=</item>
+        <item>5 - https://intranet.rfevb.com/rfevbcom/includes-html/competiciones/clasificacion321-conEncuentros-datos.php?IdCampeonato=4502&amp;Jornada=</item>
+        <item>10 - https://fcvolei.cat/apicompeticiones.php?slug=lliga-catalana-divisio-dhonor-femenina-2122</item>
+        <item>11 - https://fcvolei.cat/apicompeticiones.php?slug=lliga-catalana-divisio-dhonor-masculina-2122</item>
+        <item>12 - https://fcvolei.cat/apicompeticiones.php?slug=lliga-catalana-superliga-femenina-2122</item>
+        <item>13 - https://fcvolei.cat/apicompeticiones.php?slug=lliga-catalana-superliga-masculina-2122</item>
+        <item>14 - https://fcvolei.cat/apicompeticiones.php?slug=1A-DIVISIO-SENIOR-MASCULINA-2122</item>
+        <item>15 - https://fcvolei.cat/apicompeticiones.php?slug=1A-DIVISIO-SENIOR-FEMENINA-2122</item>
+        <item>16 - https://fcvolei.cat/apicompeticiones.php?slug=2A-DIVISIO-SENIOR-MASCULINA-2122</item>
+        <item>17 - https://fcvolei.cat/apicompeticiones.php?slug=2A-DIVISIO-SENIOR-FEMENINA-2122</item>
+        <item>18 - https://fcvolei.cat/apicompeticiones.php?slug=3A-DIVISIO-SENIOR-FEMENINA-2122</item>
+        <item>19 - https://fcvolei.cat/apicompeticiones.php?slug=4A-DIVISIO-SENIOR-FEMENINA-2122</item>
+        <item>20 - https://fcvolei.cat/apicompeticiones.php?slug=LLIGA-AMATEUR-MIXT-2122</item>
+        <item>21 - https://fcvolei.cat/apicompeticiones.php?slug=1A-DIVISIO-JUVENIL-FEMENINA-2122</item>
+        <item>22 - https://fcvolei.cat/apicompeticiones.php?slug=1A-DIVISIO-CADET-FEMENINA-2122</item>
+        <item>23 - https://fcvolei.cat/apicompeticiones.php?slug=1A-DIVISIO-JUVENIL-MASCULINA-2122</item>
+        <item>24 - https://fcvolei.cat/apicompeticiones.php?slug=2A-DIVISIO-JUVENIL-FEMENINA-2122</item>
+        <item>25 - https://fcvolei.cat/apicompeticiones.php?slug=2A-DIVISIO-CADET-FEMENINA-2122</item>
+        <item>26 - https://fcvolei.cat/apicompeticiones.php?slug=3A-DIVISIO-JUVENIL-FEMENINA-2122</item>
+        <item>27 - https://fcvolei.cat/apicompeticiones.php?slug=3A-DIVISIO-CADET-FEMENINA-2122</item>
+        <item>28 - https://fcvolei.cat/apicompeticiones.php?slug=PREFERENT-JUVENIL-FEMENI-2122</item>
+        <item>29 - https://fcvolei.cat/apicompeticiones.php?slug=PREFERENT-CADET-FEMENI-2122</item>
+        <item>30 - https://fcvolei.cat/apicompeticiones.php?slug=1A-DIVISIO-CADET-MASCULINA-2122</item>
+        <item>31 - https://fcvolei.cat/apicompeticiones.php?slug=1A-DIVISIO-INFANTIL-MASCULINA-2122</item>
+        <item>32 - https://fcvolei.cat/apicompeticiones.php?slug=1a-divisio-infantil-femenina-2122</item>
+        <item>33 - https://fcvolei.cat/apicompeticiones.php?slug=2a-divisio-infantil-femenina-2122</item>
+        <item>34 - https://fcvolei.cat/apicompeticiones.php?slug=PREFERENT-INFANTIL-FEMENI-2122</item>
+        <item>35 - https://fcvolei.cat/apicompeticiones.php?slug=LLIGA-ALEVI-MIXT-2122</item>
+        <item>36 - https://fcvolei.cat/apicompeticiones.php?slug=1A-DIVISIO-JUNIOR-FEMENINA-2122</item>
+        <item>37 - https://fcvolei.cat/apicompeticiones.php?slug=1A-DIVISION-JUNIOR-MASCULINA-2122</item>
+
+    </string-array>
+</resources>

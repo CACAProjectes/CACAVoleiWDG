@@ -24,8 +24,6 @@ import es.xuan.cacavoleiwdg.view.Vista;
  */
 public class AppVoleiWDG extends AppWidgetProvider {
 
-    private static int m_jornada = 1;
-
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
         LogCACA.afegirLog("Inici");
@@ -66,12 +64,13 @@ public class AppVoleiWDG extends AppWidgetProvider {
         //
         String tvWidgetText = AppVoleiWDGConfigureActivity.loadPref(p_context, p_appWidgetId);
         if (tvWidgetText!=null && !tvWidgetText.equals("")) {
+            //
+            String[] strUrlsTornejos = p_context.getResources().getStringArray(R.array.urlEquips);
             String[] strWidgetText = tvWidgetText.split(Constants.CTE_SEPARADOR_TEXT);
             String[] strWidgetEquip = strWidgetText[1].split(" - ");
             try {
-                int idTorneig = Integer.parseInt(strWidgetEquip[3]);
                 // Tornejos de la FCVB i RFEVB
-                Torneig tornejos = llegirTorneig(idTorneig);       // Jornada actual i anterior
+                Torneig tornejos = llegirTorneig(strUrlsTornejos, strWidgetEquip);       // Jornada actual i anterior
                 //
                 omplirDades(p_context, p_appWidgetManager, p_appWidgetId, tornejos, strWidgetEquip);
                 //
@@ -111,127 +110,44 @@ public class AppVoleiWDG extends AppWidgetProvider {
         p_appWidgetManager.updateAppWidget(p_appWidgetId, views);
     }
 
-    private static Torneig llegirTorneig(int p_idTorneig) {
+    private static Torneig llegirTorneig(String[] pUrlsTornejos, String[] p_nomTorneig) {
         /*
-            4368 - 2ª DIVISIÓ JUVENIL FEMENINA  C
-            4398 - 3ª DIVISIÓ JUVENIL FEMENINA  I
-            4402 - 2ª DIVISIÓ INFANTIL FEMENINA A
+            [1..9]      RFEVB
+            [10..100]   FCVB
         */
-        if (p_idTorneig == 2122)
-            return llegirTorneigFCVB21(p_idTorneig);
-        else if (p_idTorneig < 9000)
+        int idTorneig = Utils.stringToInt(p_nomTorneig[3]);
+        if (idTorneig > 9)    // <item>FCVOLEI - LLIGA CATALANA DIVISIO DHONOR FEMENINA - A - 10</item>
             // Torneig de la FCVB
-            return llegirTorneigFCVB(p_idTorneig);
-        else
-            // Torneig de la RFEVB
-            return llegirTorneigRFEVB(p_idTorneig);
+            return llegirTorneigFCVB21(pUrlsTornejos, p_nomTorneig);
+        // Torneig de la RFEVB
+        return llegirTorneigRFEVB(pUrlsTornejos, p_nomTorneig);
     }
 
-    private static Torneig llegirTorneigFCVB21(int p_idTorneig) {
-        boolean isJornadaActual = false;
+    private static Torneig llegirTorneigFCVB21(String[] pUrlsTornejos, String[] p_nomTorneig) {
         //
-        Torneig torneigActual = new Torneig();
-        torneigActual.setIdTorneig(p_idTorneig);
-        //
-        Torneig torneigAnterior = new Torneig();
-        torneigAnterior.setIdTorneig(p_idTorneig);
-        //
-        //VBMigracioFCVB migracioAnterior = new VBMigracioFCVB();
         VBMigracioFCVB21 migracioActual = new VBMigracioFCVB21();
-        //
-        Log.d("FCVB21 - JornadaInicial", "" + m_jornada);
-        // Torneig de la Jornada anterior
+        Torneig torneigActual = migracioActual.getTornejos(pUrlsTornejos, p_nomTorneig);
+        // Torneig de la Jornada
         try {
-            migracioActual.getResultatsTorneig(torneigActual, 1); //
+            migracioActual.getResultatsTorneig(torneigActual); //
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        //
-        Log.d("FCVB21 - JornadaAnterior", "" + torneigActual.getPartitsTorneig().getNumJornada());
-        LogCACA.afegirLog("FCVB21 - JornadaAnterior" + " - " + torneigActual.getPartitsTorneig().getNumJornada() + " - " +
-                torneigActual.getNomCategoria() + " - " + torneigActual.getNomDivisio() + " - " + torneigActual.getNomGrup());
-
-        Log.d("FCVB21 - JornadaActual", "" + torneigActual.getPartitsTorneig().getNumJornada());
-        LogCACA.afegirLog("FCVB21 - JornadaActual" + " - " + torneigActual.getPartitsTorneig().getNumJornada() + " - " +
-                torneigActual.getNomCategoria() + " - " + torneigActual.getNomDivisio() + " - " + torneigActual.getNomGrup());
-        //
         return torneigActual;
     }
 
-    private static Torneig llegirTorneigRFEVB(int p_idTorneig) {
+    private static Torneig llegirTorneigRFEVB(String[] pUrlsTornejos, String[] p_nomTorneig) {
         //
         VBMigracioRFEVB migracioActual = new VBMigracioRFEVB();
-        Torneig torneigActual = migracioActual.getTornejos(p_idTorneig);
-        //
+        Torneig torneigActual = migracioActual.getTornejos(pUrlsTornejos, p_nomTorneig);
+        // Torneig de la Jornada
         try {
-            migracioActual.getResultatsTorneig(torneigActual, 0);
-            /* TODO
-                CALCULAR JORNADA
-             */
-            //Date dataFin = Utils.addDies2Diumenge(pFiltre.getDataPartit().getTime());   // Cerca només el partits de la setmana de dilluns a diumenge
-
+            migracioActual.getResultatsTorneig(torneigActual);
         } catch (Exception ex) {
-            Log.e("llegirTorneigRFEVB", ex.toString());
+            ex.printStackTrace();
         }
-        //
-        Log.d("RFEVB - JornadaAnterior", "" + torneigActual.getPartitsTorneig().getNumJornada());
-        LogCACA.afegirLog("RFEVB - JornadaAnterior" + " - " + torneigActual.getPartitsTorneig().getNumJornada() + " - " +
-                torneigActual.getNomCategoria() + " - " + torneigActual.getNomDivisio() + " - " + torneigActual.getNomGrup());
-
-        Log.d("RFEVB - JornadaActual", "" + torneigActual.getPartitsTorneig().getNumJornada());
-        LogCACA.afegirLog("RFEVB - JornadaActual" + " - " + torneigActual.getPartitsTorneig().getNumJornada() + " - " +
-                torneigActual.getNomCategoria() + " - " + torneigActual.getNomDivisio() + " - " + torneigActual.getNomGrup());
-        //
         return torneigActual;
     }
 
-    private static Torneig llegirTorneigFCVB(int p_idTorneig) {
-        boolean isJornadaActual = false;
-        //
-        Torneig torneigActual = new Torneig();
-        torneigActual.setIdTorneig(p_idTorneig);
-        //
-        Torneig torneigAnterior = new Torneig();
-        torneigAnterior.setIdTorneig(p_idTorneig);
-        //
-        //VBMigracioFCVB migracioAnterior = new VBMigracioFCVB();
-        VBMigracioFCVB migracioActual = new VBMigracioFCVB();
-        //
-        Log.d("FCVB - JornadaInicial", "" + m_jornada);
-        // Torneig de la Jornada anterior
-        migracioActual.getResultatsTorneig(torneigAnterior, (m_jornada > 1 ? m_jornada - 1 : 1)); // Mínim jornada =1
-        do {
-            // Torneig de la Jornada actual
-            migracioActual.getResultatsTorneig(torneigActual, m_jornada++); // Mínim jornada = 1
-            isJornadaActual = comprovarJornadaActual(torneigActual.getPartitsTorneig().getDataJornada());
-            if (isJornadaActual) {
-                // Desplaçar jornades
-                torneigAnterior = torneigActual;
-                torneigActual = new Torneig();
-                torneigActual.setIdTorneig(p_idTorneig);
-            }
-            Log.d("FCVB - JornadaBucle", "" + m_jornada);
-        } while (isJornadaActual);
-        //
-        torneigActual = torneigActual;
-        //
-        m_jornada = torneigActual.getPartitsTorneig().getNumJornada();
-        //
-        Log.d("FCVB - JornadaAnterior", "" + torneigActual.getPartitsTorneig().getNumJornada());
-        LogCACA.afegirLog("FCVB - JornadaAnterior" + " - " + torneigActual.getPartitsTorneig().getNumJornada() + " - " +
-                torneigActual.getNomCategoria() + " - " + torneigActual.getNomDivisio() + " - " + torneigActual.getNomGrup());
-
-        Log.d("FCVB - JornadaActual", "" + torneigActual.getPartitsTorneig().getNumJornada());
-        LogCACA.afegirLog("FCVB - JornadaActual" + " - " + torneigActual.getPartitsTorneig().getNumJornada() + " - " +
-                torneigActual.getNomCategoria() + " - " + torneigActual.getNomDivisio() + " - " + torneigActual.getNomGrup());
-        //
-        return torneigActual;
-    }
-
-    private static boolean comprovarJornadaActual(String p_dataJornada) {
-        Date dataAvui = new Date();
-        Date dataJornada = Utils.string2Data(p_dataJornada + " 23:59");  // Jornada a final de dia
-        return dataAvui.after(dataJornada) || Utils.dataIguals(dataAvui, dataJornada);
-    }
 }
 

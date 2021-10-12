@@ -31,14 +31,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void iniTornejos() {
-        //VBMigracioFCVB migracio = new VBMigracioFCVB();
-        VBMigracioFCVB21 migracio = new VBMigracioFCVB21();
-        try {
-            migracio.llistatTornejosEquips();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+
     }
+
     private void iniXarxesSocials() {
         final Vibrator vibr = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         // FCVB
