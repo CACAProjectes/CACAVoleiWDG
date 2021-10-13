@@ -2,11 +2,11 @@
 <resources>
     <string-array name="urlEquips">
 
-        <item>1 - https://intranet.rfevb.com/rfevbcom/includes-html/competiciones/clasificacion321-conEncuentros-datos.php?IdCampeonato=4493&amp;Jornada=</item>
-        <item>2 - https://intranet.rfevb.com/rfevbcom/includes-html/competiciones/clasificacion321-conEncuentros-datos.php?IdCampeonato=4492&amp;Jornada=</item>
-        <item>3 - https://intranet.rfevb.com/rfevbcom/includes-html/competiciones/clasificacion321-conEncuentros-datos.php?IdCampeonato=4500&amp;Jornada=</item>
-        <item>4 - https://intranet.rfevb.com/rfevbcom/includes-html/competiciones/clasificacion321-conEncuentros-datos.php?IdCampeonato=4501&amp;Jornada=</item>
-        <item>5 - https://intranet.rfevb.com/rfevbcom/includes-html/competiciones/clasificacion321-conEncuentros-datos.php?IdCampeonato=4502&amp;Jornada=</item>
+        <item>4492 - https://intranet.rfevb.com/rfevbcom/includes-html/competiciones/clasificacion321-conEncuentros-datos.php?IdCampeonato=4492 - https://intranet.rfevb.com/webservices/rfevbcom/competiciones/jornadasCampeonato.php?IdCampeonato=4492</item>
+        <item>4493 - https://intranet.rfevb.com/rfevbcom/includes-html/competiciones/clasificacion321-conEncuentros-datos.php?IdCampeonato=4493 - https://intranet.rfevb.com/webservices/rfevbcom/competiciones/jornadasCampeonato.php?IdCampeonato=4493</item>
+        <item>4500 - https://intranet.rfevb.com/rfevbcom/includes-html/competiciones/clasificacion321-conEncuentros-datos.php?IdCampeonato=4500 - https://intranet.rfevb.com/webservices/rfevbcom/competiciones/jornadasCampeonato.php?IdCampeonato=4500</item>
+        <item>4501 - https://intranet.rfevb.com/rfevbcom/includes-html/competiciones/clasificacion321-conEncuentros-datos.php?IdCampeonato=4501 - https://intranet.rfevb.com/webservices/rfevbcom/competiciones/jornadasCampeonato.php?IdCampeonato=4501</item>
+        <item>4502 - https://intranet.rfevb.com/rfevbcom/includes-html/competiciones/clasificacion321-conEncuentros-datos.php?IdCampeonato=4502 - https://intranet.rfevb.com/webservices/rfevbcom/competiciones/jornadasCampeonato.php?IdCampeonato=4502</item>
         <item>10 - https://fcvolei.cat/apicompeticiones.php?slug=lliga-catalana-divisio-dhonor-femenina-2122</item>
         <item>11 - https://fcvolei.cat/apicompeticiones.php?slug=lliga-catalana-divisio-dhonor-masculina-2122</item>
         <item>12 - https://fcvolei.cat/apicompeticiones.php?slug=lliga-catalana-superliga-femenina-2122</item>

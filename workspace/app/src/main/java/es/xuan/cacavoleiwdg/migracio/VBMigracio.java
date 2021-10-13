@@ -14,6 +14,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import es.xuan.cacavoleiwdg.model.Partit;
+import es.xuan.cacavoleiwdg.model.Partits;
 import es.xuan.cacavoleiwdg.model.Torneig;
 import es.xuan.cacavoleiwdg.varis.Utils;
 
@@ -213,7 +214,6 @@ public class VBMigracio {
 		return pStrText;
 	}
 
-	//@SuppressWarnings("null")
 	public static String getContingutURL(String pStrUrl) {
 		URLConnection yc = null;
 	    InputStreamReader isr = null;
@@ -224,9 +224,10 @@ public class VBMigracio {
 			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 			StrictMode.setThreadPolicy(policy);
 			isr = new InputStreamReader(yc.getInputStream(), StandardCharsets.ISO_8859_1);
-		} catch (Exception ex) {	
+		} catch (Exception ex) {
 			// Hi ha PROXY
-		}	
+			ex.printStackTrace();
+		}
 		if (isr == null) {
 			Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(CTE_PROXY_IP, Integer.parseInt(CTE_PROXY_PORT)));
 		    try {

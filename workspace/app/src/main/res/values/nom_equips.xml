@@ -2,12 +2,12 @@
 <resources>
     <string-array name="equips">
 
-        <item>RFEVB - Liga Iberdrola - A - 1</item>
-        <item>RFEVB - Superliga Masculina - A - 2</item>
-        <item>RFEVB - Superliga Masculina 2 - A - 3</item>
-        <item>CD Badajoz Extremadura - Superliga Masculina 2 - A - 3</item>
-        <item>RFEVB - Superliga Masculina 2 - B - 4</item>
-        <item>RFEVB - Superliga Masculina 2 - C - 5</item>
+        <item>RFEVB - Liga Iberdrola - A - 4492</item>
+        <item>RFEVB - Superliga Masculina - A - 4493</item>
+        <item>RFEVB - Superliga Masculina 2 - A - 4500</item>
+        <item>CD Badajoz Extremadura - Superliga Masculina 2 - A - 4500</item>
+        <item>RFEVB - Superliga Masculina 2 - B - 4501</item>
+        <item>RFEVB - Superliga Masculina 2 - C - 4502</item>
 
         <item>FCVOLEI - LLIGA CATALANA DIVISIO DHONOR FEMENINA - A - 10</item>
         <item>FCVOLEI - LLIGA CATALANA DIVISIO DHONOR MASCULINA - A - 11</item>

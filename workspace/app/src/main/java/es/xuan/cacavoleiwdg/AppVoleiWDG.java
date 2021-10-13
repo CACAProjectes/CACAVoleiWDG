@@ -116,11 +116,11 @@ public class AppVoleiWDG extends AppWidgetProvider {
             [10..100]   FCVB
         */
         int idTorneig = Utils.stringToInt(p_nomTorneig[3]);
-        if (idTorneig > 9)    // <item>FCVOLEI - LLIGA CATALANA DIVISIO DHONOR FEMENINA - A - 10</item>
-            // Torneig de la FCVB
-            return llegirTorneigFCVB21(pUrlsTornejos, p_nomTorneig);
-        // Torneig de la RFEVB
-        return llegirTorneigRFEVB(pUrlsTornejos, p_nomTorneig);
+        if (idTorneig > 4400 && idTorneig < 4600)
+            // Torneig de la RFEVB
+            return llegirTorneigRFEVB(pUrlsTornejos, p_nomTorneig); // <item>RFEVB - Liga Iberdrola - A - 1</item>
+        // Torneig de la FCVB
+        return llegirTorneigFCVB21(pUrlsTornejos, p_nomTorneig);    // <item>FCVOLEI - LLIGA CATALANA DIVISIO DHONOR FEMENINA - A - 10</item>
     }
 
     private static Torneig llegirTorneigFCVB21(String[] pUrlsTornejos, String[] p_nomTorneig) {

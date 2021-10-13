@@ -1,15 +1,14 @@
 package es.xuan.cacavoleiwdg.migracio;
 
-import java.util.Calendar;
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.util.Date;
 
-import es.xuan.cacavoleiwdg.model.Arbitre;
-import es.xuan.cacavoleiwdg.model.Arbitres;
 import es.xuan.cacavoleiwdg.model.Partit;
 import es.xuan.cacavoleiwdg.model.Partits;
 import es.xuan.cacavoleiwdg.model.Pavello;
 import es.xuan.cacavoleiwdg.model.Torneig;
-import es.xuan.cacavoleiwdg.model.Tornejos;
 import es.xuan.cacavoleiwdg.varis.Constants;
 import es.xuan.cacavoleiwdg.varis.Utils;
 
@@ -68,24 +67,7 @@ public class VBMigracioRFEVB extends VBMigracio {
         strCelda = Utils.netejarText(strCelda);
         return strCelda;
     }
-    /*
-    private String getClassificacio(String strUrl) {
-        try {
-            int ll1 = 0, ll2 = 0;
-            //
-            String strContingut = getContingutURL(strUrl);
-            strContingut = eliminarCabeceraPagina(strContingut, "<!-- CLASIFICACI");
-            //
-            String marcaTable = "<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">";
-            ll1 = strContingut.indexOf(marcaTable);
-            String marcaFinTable = "</table>";
-            ll2 = strContingut.indexOf(marcaFinTable);
-            return strContingut.substring(ll1, ll2 + marcaFinTable.length());
-        } catch (Exception ex) {
-        }
-        return "";
-    }
-    */
+
     public Torneig getTornejos(String[] pUrlsTornejos, String[] p_nomTorneig) {
         // <item>RFEVB - Liga Iberdrola - A - 1</item>
         int iNumTorneig = Utils.stringToInt(p_nomTorneig[3]);
@@ -94,7 +76,7 @@ public class VBMigracioRFEVB extends VBMigracio {
             // <item>1 - http://www.rfevb.com/superliga-masculina-clasificacion</item>
             if (Utils.stringToInt(strUrlAux[0]) == iNumTorneig) {
                 Torneig torneig = new Torneig();
-                torneig.setUrlPrincipal(strUrlAux[1]);
+                torneig.setUrlPrincipal(strUrlAux[2]);
                 torneig.setUrlClassificacio(strUrlAux[1]);
                 torneig.setIdTorneig(Utils.stringToInt(strUrlAux[0]));
                 torneig.setNomGrup(p_nomTorneig[2]);
@@ -112,7 +94,11 @@ public class VBMigracioRFEVB extends VBMigracio {
         int iComptador = 0;
         try {
             //
-            String strContingut = getContingutURL(pTorneig.getUrlPrincipal());
+            String strContingutJornada = getContingutURL(pTorneig.getUrlPrincipal());
+            parserJornada(strContingutJornada, partitsTorneig);
+            //
+            String strContingut = getContingutURL(pTorneig.getUrlClassificacio() +
+                    "&Jornada=" + partitsTorneig.getNumJornada());
             //
             int iClasificacio = strContingut.indexOf("<!-- CLASIFICACI");
             int iPartitsProxims = strContingut.indexOf("<!-- PROXIMOS ENCUENTROS -->");
@@ -135,11 +121,6 @@ public class VBMigracioRFEVB extends VBMigracio {
                 ll1 = strContingut.indexOf("<td", ll2);
                 ll2 = strContingut.indexOf("</td>", ll1);
                 parsearDataPartit(partit, strContingut.substring(ll1, ll2));
-                //
-                if (iComptador++ == 0) {
-                    partitsTorneig.setDataJornada(Utils.data2StringRed(partit.getDataPartit()));
-                    partitsTorneig.setNumJornada(1);
-                }
                 //
                 ll1 = strContingut.indexOf("<td>", ll2);
                 ll2 = strContingut.indexOf("</td>", ll1);
@@ -186,6 +167,27 @@ public class VBMigracioRFEVB extends VBMigracio {
         return;
     }
 
+    private void parserJornada(String pContingutJornada, Partits pPartitsTorneig) {
+        int numJornada = 1;
+        String strDataJornadaAct = Utils.data2StringJSON(new Date());
+        try {
+            JSONArray arr = new JSONArray(pContingutJornada);
+            for (int i = 0; i < arr.length(); i++) {
+                String strNumJornada = arr.getJSONObject(i).getString("Jornada");
+                String strDataJornada = arr.getJSONObject(i).getString("Fecha");
+                if (Utils.string2DataJSON(strDataJornada).compareTo(new Date()) > 0) {
+                    break;
+                }
+                strDataJornadaAct = strDataJornada;
+                numJornada = Utils.stringToInt(strNumJornada);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        pPartitsTorneig.setDataJornada(strDataJornadaAct);
+        pPartitsTorneig.setNumJornada(numJornada);
+    }
+
     private void parsearResultats(Partit partit, String pText) {
         // <td>0 - 0 (0-0/0-0/0-0/0-0/0-0)</td>
         int ll1 = pText.indexOf(">") + 1;
@@ -205,7 +207,12 @@ public class VBMigracioRFEVB extends VBMigracio {
 
     private void parsearEquips(Partit pPartit, String pText) {
         // <td>6. CV Almendralejo Extremadura - CyL Palencia 2022</td>
+        int ll0 =  pText.indexOf(">");
         int ll = pText.indexOf(".");
+        // Núm. jornada
+        String strNumJornada = pText.substring(ll0 + 1, ll);
+        pPartit.setJornada(Utils.stringToInt(strNumJornada));
+        // Equips local i visitant
         pText = pText.substring(ll + 1);
         String[] strAux = pText.split("-");
         pPartit.setEquipLocal(Utils.parsearText(strAux[0].trim()));
@@ -220,160 +227,9 @@ public class VBMigracioRFEVB extends VBMigracio {
         pPartit.setEquipVisitant(Utils.parsearText(strAux[1].trim()));
     }
 
-    /*
-    private void omplirDadesDivisio(Partit pPartit, String pUrl) {
-		/*
-		 * 	"http://www.rfevb.com/svm-calendario",
-			"http://www.rfevb.com/liga-iberdrola-calendario",
-			"http://www.rfevb.com/sm2-calendario-grupo-a",
-			"http://www.rfevb.com/sm2-calendario-grupo-b",
-			"http://www.rfevb.com/sf2-calendario-gr-a",
-			"http://www.rfevb.com/sf2-calendario-gr-b",
-			"http://www.rfevb.com/primera-division-masculina-grupo-a-calendario",
-			"http://www.rfevb.com/primera-division-masculina-grupo-b-calendario",
-			"http://www.rfevb.com/primera-division-masculina-grupo-c-calendario",
-			"http://www.rfevb.com/primera-division-femenina-grupo-a-calendario",
-			"http://www.rfevb.com/primera-division-femenina-grupo-b-calendario",
-			"http://www.rfevb.com/primera-division-femenina-grupo-c-calendario"
-		 *
-        if (pUrl.contains("svm-calendario")) {
-            pPartit.setDivisio("SVM");
-            pPartit.setCategoria("Superliga Masculina");
-            pPartit.setGrup("");
-            pPartit.setFase("Liga Regular");
-            pPartit.setIdTorneig(89999);
-        }
-        else if (pUrl.contains("liga-iberdrola-calendario")) {
-            pPartit.setDivisio("SFV");
-            pPartit.setCategoria("Liga Iberdrola");
-            pPartit.setGrup("");
-            pPartit.setFase("Liga Regular");
-            pPartit.setIdTorneig(89998);
-        }
-        else if (pUrl.contains("sm2-calendario-grupo-a")) {
-            pPartit.setDivisio("SM2");
-            pPartit.setCategoria("Superliga-2 Masculina");
-            pPartit.setGrup("A");
-            pPartit.setFase("Liga Regular");
-            pPartit.setIdTorneig(89997);
-        }
-        else if (pUrl.contains("sm2-calendario-grupo-b")) {
-            pPartit.setDivisio("SM2");
-            pPartit.setCategoria("Superliga-2 Masculina");
-            pPartit.setGrup("B");
-            pPartit.setFase("Liga Regular");
-            pPartit.setIdTorneig(89996);
-        }
-        else if (pUrl.contains("sf2-calendario-gr-a")) {
-            pPartit.setDivisio("SF2");
-            pPartit.setCategoria("Superliga-2 Femenina");
-            pPartit.setGrup("A");
-            pPartit.setFase("Liga Regular");
-            pPartit.setIdTorneig(89995);
-        }
-        else if (pUrl.contains("sf2-calendario-gr-b")) {
-            pPartit.setDivisio("SF2");
-            pPartit.setCategoria("Superliga-2 Feminina");
-            pPartit.setGrup("B");
-            pPartit.setFase("Liga Regular");
-            pPartit.setIdTorneig(89994);
-        }
-        else if (pUrl.contains("primera-division-masculina-grupo-a-calendario")) {
-            pPartit.setDivisio("Primera División Masculina");
-            pPartit.setCategoria("Primera División Masculina");
-            pPartit.setGrup("A");
-            pPartit.setFase("Liga Regular");
-            pPartit.setIdTorneig(89993);
-        }
-        else if (pUrl.contains("primera-division-masculina-grupo-b-calendario")) {
-            pPartit.setDivisio("Primera División Masculina");
-            pPartit.setCategoria("Primera División Masculina");
-            pPartit.setGrup("B");
-            pPartit.setFase("Liga Regular");
-            pPartit.setIdTorneig(89992);
-        }
-        else if (pUrl.contains("primera-division-masculina-grupo-c-calendario")) {
-            pPartit.setDivisio("Primera División Masculina");
-            pPartit.setCategoria("Primera División Masculina");
-            pPartit.setGrup("C");
-            pPartit.setFase("Liga Regular");
-            pPartit.setIdTorneig(89991);
-        }
-        else if (pUrl.contains("primera-division-femenina-grupo-a-calendario")) {
-            pPartit.setDivisio("Primera División Femenina");
-            pPartit.setCategoria("Primera División Femenina");
-            pPartit.setGrup("A");
-            pPartit.setFase("Liga Regular");
-            pPartit.setIdTorneig(89990);
-        }
-        else if (pUrl.contains("primera-division-femenina-grupo-b-calendario")) {
-            pPartit.setDivisio("Primera División Femenina");
-            pPartit.setCategoria("Primera División Femenina");
-            pPartit.setGrup("B");
-            pPartit.setFase("Liga Regular");
-            pPartit.setIdTorneig(89989);
-        }
-        else if (pUrl.contains("primera-division-femenina-grupo-c-calendario")) {
-            pPartit.setDivisio("Primera División Femenina");
-            pPartit.setCategoria("Primera División Femenina");
-            pPartit.setGrup("C");
-            pPartit.setFase("Liga Regular");
-            pPartit.setIdTorneig(89988);
-        }
-    }
-     */
-    private Date sumarAny(Date pData) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(pData);
-        cal.add(Calendar.YEAR, 2000);
-        return cal.getTime();
-    }
-
-    private int convertString2Integer(String pResultatLocal) {
-        if (pResultatLocal != null && !pResultatLocal.equals(""))
-            return Integer.parseInt(pResultatLocal);
-        return 0;
-    }
-    private Arbitres convertString2Arbitres(String pNomArbitres) {
-        // <td colspan="5"><div align="center">Lugar:   A Cachada</div></td>
-        Arbitres arbitres = new Arbitres();
-        if (pNomArbitres != null && !pNomArbitres.equals(""))
-            arbitres.add(new Arbitre(pNomArbitres));
-        return arbitres;
-    }
     private Pavello convertString2Pavello(String pNomPavello) {
         // <td colspan="5"><div align="center">Lugar:   A Cachada</div></td>
         return new Pavello("", pNomPavello);
-    }
-    private String parsearArbitres(String pStrArbitres) {
-        // <td colspan="5"><div align="center">1er &Aacute;rbitro: Marcos Antonio Folgar Fraga  </div></td>
-        if (pStrArbitres != null && !pStrArbitres.equals(""))
-            return pStrArbitres.trim();
-        return "";
-    }
-    private String parsearPavello(String pStrPavello) {
-        // <td colspan="5"><div align="center">Lugar:   A Cachada</div></td>
-        if (pStrPavello != null && !pStrPavello.equals(""))
-            return pStrPavello.trim();
-        return "";
-    }
-    private String parsearEquip(String pStrEquip) {
-        // <td width="42%"><div align="right"><strong>Rotogal Boiro </strong></div></td>
-        if (pStrEquip != null && !pStrEquip.equals(""))
-            return pStrEquip.trim();
-        return "";
-    }
-    private String parsearDia(String pStrDia) {
-        // <td><div align="center"><strong>06/10/18 </strong>
-        if (pStrDia != null && !pStrDia.equals(""))
-            return pStrDia.trim();
-        return "";
-    }
-    private String parsearHora(String pStrHora) {
-        // <br><br> 19:00</div></td>
-        if (pStrHora != null && !pStrHora.equals(""))
-            return pStrHora.trim();
-        return "";
     }
 
 }

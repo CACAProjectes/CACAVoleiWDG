@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Utils implements Serializable {
+	public static final String CTE_FORMAT_DATA_JSON = "dd-MM-yyyy";
     public static final String CTE_FORMAT_DATA_BD = "yyyy-MM-dd HH:mm:ss";
     public static final String CTE_FORMAT_DATA_RED_BD = "yyyy-MM-dd";
 	public static final String CTE_FORMAT_DATA_COMP = "dd/MM/yyyy HH:mm:ss";
@@ -69,6 +70,16 @@ public class Utils implements Serializable {
         }
         return null;
     }
+	public static Date string2DataJSON(String p_data) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat(CTE_FORMAT_DATA_JSON, Locale.getDefault());
+		try {
+			return dateFormat.parse(p_data.trim());
+		} catch (ParseException e) {
+			//e.printStackTrace();
+		}
+		return null;
+	}
+
 	public static Date string2DataBD(String p_data) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat(CTE_FORMAT_DATA_BD, Locale.getDefault());
 		try {
@@ -548,4 +559,13 @@ public class Utils implements Serializable {
 		return number.intValue();
 	}
 
+	public static String data2StringJSON(Date p_date) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat(CTE_FORMAT_DATA_JSON, Locale.getDefault());
+		try {
+			return dateFormat.format(p_date);
+		} catch (Exception e) {
+			//e.printStackTrace();
+		}
+		return null;
+	}
 }
