@@ -147,6 +147,9 @@ public class VBMigracioFCVB21 extends VBMigracio {
                         if (iJornada == iJornadaActual + 1) {
                             // Següent
                             partitsTorneig.addProx(pPartit);
+                        }
+                        if (iJornada > iJornadaActual + 1) {
+                            // Fi de bucle
                             break;
                         }
                     }

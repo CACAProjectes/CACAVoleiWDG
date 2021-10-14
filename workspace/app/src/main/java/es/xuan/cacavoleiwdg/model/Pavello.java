@@ -16,6 +16,7 @@ public class Pavello implements Serializable {
 
 	public Pavello(String strUrl, String nomUbicacio) {
 		setUrl(strUrl);
+		setUrlMaps(strUrl);
 		setNom(nomUbicacio);
 	}
 	
