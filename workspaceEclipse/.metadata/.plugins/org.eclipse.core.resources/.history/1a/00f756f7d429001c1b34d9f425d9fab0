@@ -1,0 +1,335 @@
+package es.xuan.cacavoleiwdg.varis;
+
+import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
+public class Utils implements Serializable {
+    public static final String CTE_FORMAT_DATA_BD = "yyyy-MM-dd HH:mm:ss";
+    public static final String CTE_FORMAT_DATA_RED_BD = "yyyy-MM-dd";
+	public static final String CTE_FORMAT_DATA_COMP = "dd/MM/yyyy HH:mm:ss";
+	public static final String CTE_FORMAT_DATA = "dd/MM/yyyy HH:mm";
+	public static final String CTE_FORMAT_DATA_RED = "dd/MM/yyyy";
+	public static final String CTE_FORMAT_DATA_HORA = "HH:mm";
+	public static final String CTE_FORMAT_DATA_FILE = "dd-MM";
+	public static final String CTE_FORMAT_DATA_DESCRIPCIO = "yyyyMMdd";
+
+	public static String data2StringFile(Date p_data) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat(CTE_FORMAT_DATA_FILE, Locale.getDefault());
+		try {
+			return dateFormat.format(p_data);
+		} catch (Exception e) {
+			//e.printStackTrace();
+		} 
+		return null;
+	}
+	public static Date addSetmana(Date pDate) {
+		Calendar cal = Calendar.getInstance();    
+		cal.setTime(pDate);    
+		cal.add(Calendar.DATE, 6);
+		return cal.getTime();
+	}
+	public static void addSetmanaCal(Calendar pCalendar, Boolean pSumar) {
+		if (pSumar)
+			pCalendar.add(Calendar.DAY_OF_YEAR, 7);
+		else
+			pCalendar.add(Calendar.DAY_OF_YEAR, -7);
+	}
+    public static String data2StringBD(Date p_data) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(CTE_FORMAT_DATA_RED_BD, Locale.getDefault());
+        try {
+            return dateFormat.format(p_data);
+        } catch (Exception e) {
+            //e.printStackTrace();
+        }
+        return null;
+    }
+	public static Date string2DataBD(String p_data) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat(CTE_FORMAT_DATA_BD, Locale.getDefault());
+		try {
+			return dateFormat.parse(p_data.trim());
+		} catch (ParseException e) {
+			//e.printStackTrace();
+		}
+		return null;
+	}
+	public static Calendar string2DataDescrip(Integer p_data) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat(CTE_FORMAT_DATA_DESCRIPCIO, Locale.getDefault());
+		try {
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(dateFormat.parse("" + p_data));
+			return cal;
+		} catch (ParseException e) {
+			//e.printStackTrace();
+		}
+		return null;
+	}
+	public static Date string2DataRed(String p_data) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat(CTE_FORMAT_DATA_RED, Locale.getDefault());
+		try {
+			return dateFormat.parse(p_data.trim());
+		} catch (ParseException e) {
+			//e.printStackTrace();
+		} 
+		return null;
+	}
+	public static Date string2Data(String p_data) {
+		// Fecha larga
+		SimpleDateFormat dateFormat = new SimpleDateFormat(CTE_FORMAT_DATA, Locale.getDefault());
+		try {
+			return dateFormat.parse(p_data.trim());
+		} catch (ParseException e) {} 
+		// Fecha corta
+		dateFormat = new SimpleDateFormat(CTE_FORMAT_DATA_RED, Locale.getDefault());
+		try {
+			return dateFormat.parse(p_data.trim());
+		} catch (ParseException e) {}
+		return null;
+	}
+	public static String data2StringComp(Date p_data) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat(CTE_FORMAT_DATA_COMP, Locale.getDefault());
+		try {
+			return dateFormat.format(p_data);
+		} catch (Exception e) {
+			//e.printStackTrace();
+		} 
+		return null;
+	}
+	public static String data2String(Date p_data) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat(CTE_FORMAT_DATA, Locale.getDefault());
+		try {
+			return dateFormat.format(p_data);
+		} catch (Exception e) {
+			//e.printStackTrace();
+		} 
+		return null;
+	}
+	public static String data2StringRed(Date p_data) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat(CTE_FORMAT_DATA_RED, Locale.getDefault());
+		try {
+			if (p_data != null)
+				return dateFormat.format(p_data);
+		} catch (Exception e) {
+			//e.printStackTrace();
+		} 
+		return null;
+	}
+	public static Integer data2StringDescrip(Calendar p_data) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat(CTE_FORMAT_DATA_DESCRIPCIO, Locale.getDefault());
+		try {
+			if (p_data != null)
+				return Integer.parseInt(dateFormat.format(p_data.getTime()));
+		} catch (Exception e) {
+			//e.printStackTrace();
+		}
+		return null;
+	}
+
+	public static String data2StringHora(Date p_data) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat(CTE_FORMAT_DATA_HORA, Locale.getDefault());
+		try {
+			if (p_data != null)
+				return dateFormat.format(p_data);
+		} catch (Exception e) {
+			//e.printStackTrace();
+		} 
+		return null;
+	}
+	public static Date addDia(Date pDate, int iDias) {
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(pDate);
+		cal.add(Calendar.DATE, iDias);
+		return cal.getTime();
+	}
+	public static Calendar addDia(Calendar pCal, int iDias) {
+		Calendar cal = (Calendar) pCal.clone();
+		cal.add(Calendar.DATE, iDias);
+		return cal;
+	}
+	public static Date addDia(Date pDate) {
+		Calendar cal = Calendar.getInstance();    
+		cal.setTime(pDate);    
+		cal.add(Calendar.DATE, 1);
+		return cal.getTime();	
+	}
+	
+
+	public static String omplirBlancs2Like(String pText) {
+		return pText.replaceAll(" ", "%");
+	}
+
+	public static int data2DiaSetmanaAvui() {
+		Calendar cal = Calendar.getInstance();
+		return cal.get(Calendar.DAY_OF_WEEK);
+	}
+	public static int data2DiaSetmana(Calendar pCal) {
+		return pCal.get(Calendar.DAY_OF_WEEK);
+	}
+
+	public static int data2Mes(Calendar m_dataFiltre) {
+		return m_dataFiltre.get(Calendar.MONTH);
+	}
+
+	public static int data2DiaMes() {
+		Calendar cal = Calendar.getInstance();
+		return cal.get(Calendar.DAY_OF_MONTH);
+	}
+
+	public static Calendar data2SumarDiaSel(Calendar pCal, int pDifDies) {
+		Calendar cal = (Calendar) pCal.clone();
+		cal.add(Calendar.DAY_OF_YEAR, pDifDies);
+		return cal;
+	}
+    public static int data2SumarDia1(Calendar pCal, int pDifDies) {
+		Calendar cal = (Calendar) pCal.clone();
+		cal.add(Calendar.DAY_OF_YEAR, pDifDies);
+        return cal.get(Calendar.DAY_OF_MONTH);
+    }
+
+    public static Calendar data2Avui() {
+        return Calendar.getInstance();
+    }
+
+    public static Calendar data2SumarDiaCal(Calendar pCal, int pDifDies) {
+		Calendar cal = (Calendar) pCal.clone();
+		cal.add(Calendar.DAY_OF_YEAR, pDifDies);
+		return cal;
+    }
+
+    public static Date addDies2Diumenge(Date pDataPartit) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(pDataPartit);
+        // Buscar el primer diumenge de la setmana
+        while (cal.get(Calendar.DAY_OF_WEEK) != Constants.CTE_DIUMENGE) {
+            cal.add(Calendar.DAY_OF_YEAR, 1);
+        }
+		cal.add(Calendar.DAY_OF_YEAR, 1);	// Ajustament pel BETWEEN de la BBDD SQLite
+        return cal.getTime();
+    }
+
+	private static boolean esAvui(Calendar pData) {
+		Calendar calAvui = data2Avui();
+		return pData.get(Calendar.DAY_OF_MONTH) == calAvui.get(Calendar.DAY_OF_MONTH) &&
+				pData.get(Calendar.MONTH) == calAvui.get(Calendar.MONTH) &&
+				pData.get(Calendar.YEAR) == calAvui.get(Calendar.YEAR);
+	}
+
+	public static Calendar string2DataBDCalendari(String p_data) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat(CTE_FORMAT_DATA_DESCRIPCIO, Locale.getDefault());
+		try {
+			Date data = dateFormat.parse(p_data);
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(data);
+			return cal;
+		} catch (Exception e) {
+			//e.printStackTrace();
+		}
+		return null;
+	}
+
+    public static String[] desglosarSetsResultats(String pResultatSets, Boolean pIsLocal) {
+		/*
+		 * 	VOLEI VILASSAR;3;0;CVB BARÇA;25-16/27-25/25-20
+		 */
+		/*
+			25-16/27-25/25-20
+		 */
+		String resultats[] = new String[] {"","","","",""};
+		String sets[] = new String[] {"0-0","0-0","0-0","0-0","0-0"};
+		try {
+			sets = pResultatSets.split(Constants.CTE_SEPARADOR_SETS);
+		} catch (Exception ex) {}
+		// Set-1
+		try {
+			resultats[0] = (pIsLocal ? sets[0].split(Constants.CTE_SEPARADOR_RESULTAT_RED)[0] : sets[0].split(Constants.CTE_SEPARADOR_RESULTAT_RED)[1]);
+		} catch (Exception ex) {
+			resultats[0] = "0";
+		}
+		// Set-1
+		try {
+			resultats[1] = (pIsLocal ? sets[1].split(Constants.CTE_SEPARADOR_RESULTAT_RED)[0] : sets[1].split(Constants.CTE_SEPARADOR_RESULTAT_RED)[1]);
+		} catch (Exception ex) {
+			resultats[1] = "0";
+		}
+		// Set-1
+		try {
+			resultats[2] = (pIsLocal ? sets[2].split(Constants.CTE_SEPARADOR_RESULTAT_RED)[0] : sets[2].split(Constants.CTE_SEPARADOR_RESULTAT_RED)[1]);
+		} catch (Exception ex) {
+			resultats[2] = "0";
+		}
+		// Set-1
+		try {
+			resultats[3] = (pIsLocal ? sets[3].split(Constants.CTE_SEPARADOR_RESULTAT_RED)[0] : sets[3].split(Constants.CTE_SEPARADOR_RESULTAT_RED)[1]);
+		} catch (Exception ex) {
+			resultats[3] = "0";
+		}
+		// Set-1
+		try {
+			resultats[4] = (pIsLocal ? sets[4].split(Constants.CTE_SEPARADOR_RESULTAT_RED)[0] : sets[4].split(Constants.CTE_SEPARADOR_RESULTAT_RED)[1]);
+		} catch (Exception ex) {
+			resultats[4] = "0";
+		}
+		return resultats;
+	}
+
+    public static int convertJornada2Int(String pText, String pSufixe) {
+		// Jornada nº 1
+		int iJornada = 0;
+		if (pText != null && !pText.equals("")) {
+			String strRes = pText.substring(pSufixe.length() + 1);
+			try {
+				iJornada = Integer.parseInt(strRes);
+			}
+			catch (Exception e) {
+				// Ha seleccionat la primera opció - Jornada Actual - Jornada=0
+			}
+		}
+		return iJornada;
+    }
+
+	public static String netejarString(String pText) {
+		String strText = "";
+		if (pText != null && !pText.equals("")) {
+			strText = pText.replaceAll("<ps>", "");
+			strText = strText.replaceAll("</ps>", "");
+			strText = strText.replaceAll("<g3>", "");
+			strText = strText.replaceAll("</g3>", "");
+			strText = strText.replaceAll("<g2>", "");
+			strText = strText.replaceAll("</g2>", "");
+			strText = strText.replaceAll("<p1>", "");
+			strText = strText.replaceAll("</p1>", "");
+			strText = strText.replaceAll("<p0>", "");
+			strText = strText.replaceAll("</p0>", "");
+		}
+		return strText;
+	}
+
+    public static String netejarText(String pText) {
+		String strText = "";
+		if (pText != null && !pText.equals("")) {
+			strText = pText.replaceAll("<strong>", "");
+			strText = strText.replaceAll("</strong>", "");
+            strText = strText.replaceAll("<td>", "");
+            strText = strText.replaceAll("<td >", "");
+			if (strText.contains("<img")) {
+				int iInd1 = strText.indexOf("<img");
+				int iInd2 = strText.indexOf(">", iInd1);
+				strText = strText.substring(0, iInd1) + strText.substring(iInd2 + 1);
+			}
+		}
+		return strText;
+    }
+
+    public static boolean dataIguals(Date pData1, Date pData2) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat(CTE_FORMAT_DATA_RED, Locale.getDefault());
+		try {
+			return dateFormat.format(pData1).equals(dateFormat.format(pData2));
+		} catch (Exception e) {
+			//e.printStackTrace();
+		}
+		return false;
+    }
+}
